@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case 0001 — Garnier Vitamin C Serum — Double Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEBE2; --paper-card: #F7F4EC; --ink: #1E1C18; --ink-soft: #6E6A5F;
+    --red: #B23A2E; --green: #3D6B52; --amber: #9A7B2E; --line: #d9d3c3; --max-w: 760px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; color: var(--ink); }
+  a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 20px 0; border-bottom: 2px solid var(--ink); }
+  .header-row { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; text-decoration: none; color: var(--ink); }
+  .logo .sq { display:inline-block; width:8px; height:8px; background:var(--red); margin-right:7px; vertical-align:middle; }
+  .back { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); text-decoration: none; }
+
+  .case-header { padding: 40px 0 24px; border-bottom: 2px solid var(--ink); }
+  .case-id { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.03em; margin-bottom: 12px; }
+  h1.title { font-size: 34px; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .case-tags { display: flex; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); }
+
+  .claim-box {
+    background: var(--paper-card); border: 2px solid var(--ink); padding: 22px 26px; margin: 32px 0;
+  }
+  .claim-label { font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600; color: var(--red); margin-bottom: 8px; letter-spacing: 0.03em; }
+  .claim-text { font-style: italic; font-size: 18px; }
+
+  p { margin: 0 0 22px; }
+  h2.sub { font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 700; margin: 44px 0 16px; }
+
+  .evidence-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-family: 'Newsreader', serif; font-size: 15px; }
+  .evidence-table th {
+    text-align: left; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600;
+    background: var(--ink); color: var(--paper); padding: 10px 12px;
+  }
+  .evidence-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+  .evidence-table tr:nth-child(even) td { background: var(--paper-card); }
+
+  .verdict-strip {
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
+    border: 2px solid var(--green); padding: 22px 26px; margin: 40px 0;
+  }
+  .verdict-stamp {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--green);
+    border: 3px solid var(--green); padding: 8px 14px; transform: rotate(-6deg); white-space: nowrap;
+  }
+  .verdict-strip p { margin: 0; font-size: 15px; color: var(--ink-soft); }
+
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+  .pc-col h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13.5px; margin: 0 0 10px; letter-spacing: 0.02em; }
+  .pc-col.pros h4 { color: var(--green); }
+  .pc-col.cons h4 { color: var(--red); }
+  .pc-col ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--ink-soft); }
+  .pc-col li { margin-bottom: 6px; }
+
+  .file-footer { border: 2px solid var(--ink); padding: 24px 26px; margin: 40px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .file-footer .price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; }
+  .btn { display: inline-block; background: var(--ink); color: var(--paper); padding: 12px 22px; font-family: 'Space Grotesk', sans-serif; font-size: 13.5px; font-weight: 600; text-decoration: none; }
+  .btn:hover { background: var(--red); }
+
+  .disclosure { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); border-top: 2px solid var(--ink); padding-top: 20px; margin-top: 48px; }
+  footer { border-top: 2px solid var(--ink); padding: 20px 0 36px; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); margin-top: 30px; }
+
+  @media (max-width: 600px) {
+    h1.title { font-size: 26px; }
+    .pros-cons { grid-template-columns: 1fr; }
+    .verdict-strip { grid-template-columns: 1fr; }
+    .evidence-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a href="index.html" class="logo"><span class="sq"></span>Double Check</a>
+    <a href="index.html" class="back">← Case log</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="case-header">
+    <div class="case-id">CASE 0001 — SERUMS / BRIGHTENING</div>
+    <h1 class="title">Garnier Vitamin C + Face Serum</h1>
+    <div class="case-tags"><span>7 min read</span><span>·</span><span>Updated this month</span></div>
+  </div>
+
+  <div class="claim-box">
+    <div class="claim-label">CLAIM UNDER REVIEW</div>
+    <div class="claim-text">"100X stronger than Vitamin C — dark spots fade in 3 days"</div>
+  </div>
+
+  <p>This is one of the most-bought serums in India right now, sitting at the top of Myntra's personal care listings with over 40,000 ratings behind it. So before deciding whether the claim above holds up, here's what's actually in the bottle.</p>
+
+  <h2 class="sub">The evidence</h2>
+  <p>Ingredient lists are ordered by concentration — what's near the top is doing the most work. Here's the breakdown, in order.</p>
+
+  <table class="evidence-table">
+    <thead>
+      <tr><th>Ingredient</th><th>What it actually does</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Niacinamide</td><td>The real star — supports skin barrier, calms inflammation, genuinely helps even tone</td></tr>
+      <tr><td>3-O-Ethyl Ascorbic Acid</td><td>A stable, gentle Vitamin C derivative — less irritating, but also less potent than pure Vitamin C</td></tr>
+      <tr><td>Salicylic Acid (BHA)</td><td>Mild exfoliant, present at a low, gentle concentration</td></tr>
+      <tr><td>Sodium Hyaluronate</td><td>Hydration — binds water to the skin</td></tr>
+      <tr><td>Adenosine</td><td>Soothing, barrier-repairing</td></tr>
+    </tbody>
+  </table>
+
+  <p>The "100X stronger" line isn't a measurable claim — it's not clear what it's being compared against. What's actually here is a well-balanced, low-irritation brightening formula built around niacinamide, not a high-strength Vitamin C treatment. If pure, potent Vitamin C is specifically what you want, this isn't that. If you want a gentle daily brightener that won't sting, that's exactly what this is.</p>
+
+  <div class="verdict-strip">
+    <div class="verdict-stamp">VERIFIED*</div>
+    <p>The core promise — visible brightening with low irritation — holds up. The "100X" figure specifically does not, since it's unverifiable marketing language rather than a real measurement.</p>
+  </div>
+
+  <div class="pros-cons">
+    <div class="pc-col pros">
+      <h4>SUPPORTING EVIDENCE</h4>
+      <ul>
+        <li>Genuinely gentle — low irritation risk for sensitive skin</li>
+        <li>Niacinamide + BHA is a solid, evidence-backed pairing</li>
+        <li>Lightweight texture, layers easily</li>
+        <li>Very accessible price for daily use</li>
+      </ul>
+    </div>
+    <div class="pc-col cons">
+      <h4>RED FLAGS</h4>
+      <ul>
+        <li>"100X" and "3 days" claims aren't verifiable</li>
+        <li>Vitamin C concentration is mild, not for strong-actives routines</li>
+        <li>Contains fragrance (linalool, geraniol) — note if you react to scent</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="sub">Who should actually buy this</h2>
+  <p>Good fit if you want a low-effort, low-irritation entry into brightening actives — especially if you're new to niacinamide or Vitamin C. Less of a fit if you're already using stronger actives and want something to push results further, rather than maintain them.</p>
+
+  <div class="file-footer">
+    <div>
+      <div class="price">₹340</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--ink-soft);">30ml · widely available on Myntra, Nykaa, Amazon</div>
+    </div>
+    <a href="#" class="btn">Check current price</a>
+  </div>
+
+  <div class="disclosure">This case file contains an affiliate link. If you buy through it, a small commission is earned at no extra cost to you — it does not change the verdict above.</div>
+</div>
+
+<footer>
+  <div class="wrap">Double Check — ingredient verification log</div>
+</footer>
+
+</body>
+</html>

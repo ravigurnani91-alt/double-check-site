@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Double Check — we read the label so you don't have to</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEBE2;
+    --paper-card: #F7F4EC;
+    --ink: #1E1C18;
+    --ink-soft: #6E6A5F;
+    --red: #B23A2E;
+    --green: #3D6B52;
+    --amber: #9A7B2E;
+    --line: #d9d3c3;
+    --max-w: 960px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, .label-font {
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0; color: var(--ink);
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 22px 0; border-bottom: 2px solid var(--ink); }
+  .header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 21px; letter-spacing: -0.01em; }
+  .logo .sq { display:inline-block; width:9px; height:9px; background:var(--red); margin-right:8px; vertical-align:middle; }
+  nav { display: flex; gap: 26px; font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 500; }
+  nav a { padding-bottom: 3px; border-bottom: 2px solid transparent; }
+  nav a:hover, nav a.nav-active { border-bottom-color: var(--red); }
+
+  .masthead { padding: 52px 0 44px; border-bottom: 2px solid var(--ink); }
+  .masthead-tag { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--red); margin-bottom: 14px; }
+  .masthead h1 { font-size: 44px; font-weight: 700; line-height: 1.1; max-width: 14ch; letter-spacing: -0.015em; }
+  .masthead-sub { font-family: 'Newsreader', serif; font-style: italic; font-size: 18px; color: var(--ink-soft); max-width: 46ch; margin-top: 18px; }
+
+  .case-featured {
+    margin: 44px 0;
+    border: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    background: var(--paper-card);
+  }
+  .case-featured-main { padding: 30px 32px; }
+  .case-id { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); letter-spacing: 0.03em; margin-bottom: 10px; }
+  .case-featured h2 { font-size: 27px; margin-bottom: 12px; max-width: 30ch; }
+  .case-claim {
+    font-style: italic; color: var(--ink-soft); font-size: 15px;
+    border-left: 3px solid var(--red); padding-left: 14px; margin: 16px 0 20px;
+  }
+  .case-link { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 2px; }
+  .case-link:hover { border-color: var(--red); color: var(--red); }
+
+  .stamp {
+    display: flex; align-items: center; justify-content: center;
+    padding: 30px; border-left: 2px solid var(--ink);
+    min-width: 180px;
+  }
+  .stamp-inner {
+    border: 3px solid var(--green); color: var(--green);
+    padding: 10px 16px; transform: rotate(-8deg);
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px;
+    letter-spacing: 0.04em; text-align: center;
+  }
+  .stamp-inner.flagged { border-color: var(--red); color: var(--red); }
+  .stamp-inner.mixed { border-color: var(--amber); color: var(--amber); }
+
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin: 52px 0 4px; }
+  .section-head h2 { font-size: 22px; }
+  .section-head .count { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); }
+
+  .log-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  .log-table th {
+    text-align: left; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600;
+    color: var(--ink-soft); padding: 10px 8px; border-bottom: 2px solid var(--ink);
+  }
+  .log-table td { padding: 16px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .log-table tr:hover td { background: var(--paper-card); }
+  .log-id { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); white-space: nowrap; }
+  .log-title { font-family: 'Newsreader', serif; font-size: 18px; }
+  .log-title:hover { color: var(--red); }
+  .log-cat { font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--ink-soft); }
+  .status-tag {
+    font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600;
+    padding: 4px 9px; border: 1.5px solid currentColor; white-space: nowrap;
+  }
+  .status-tag.verified { color: var(--green); }
+  .status-tag.flagged { color: var(--red); }
+  .status-tag.mixed { color: var(--amber); }
+  .log-time { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); text-align: right; white-space: nowrap; }
+
+  .cat-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 52px 0; }
+  .cat-card { border: 1.5px solid var(--ink); padding: 20px; }
+  .cat-card:hover { border-color: var(--red); }
+  .cat-card .cat-num { font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--red); margin-bottom: 8px; }
+  .cat-card h4 { font-size: 18px; font-family: 'Newsreader', serif; margin-bottom: 6px; }
+  .cat-card p { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+
+  .about-block { padding: 44px 0 60px; border-top: 2px solid var(--ink); margin-top: 20px; display: grid; grid-template-columns: 1fr 1.6fr; gap: 40px; }
+  .about-block h3 { font-size: 19px; }
+  .about-block p { font-size: 15px; color: var(--ink-soft); margin: 0; }
+
+  footer { border-top: 2px solid var(--ink); padding: 20px 0 36px; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 760px) {
+    .masthead h1 { font-size: 32px; }
+    .case-featured { grid-template-columns: 1fr; }
+    .stamp { border-left: none; border-top: 2px solid var(--ink); padding: 22px; }
+    .cat-strip { grid-template-columns: 1fr; }
+    .about-block { grid-template-columns: 1fr; }
+    .log-table thead { display: none; }
+    .log-table td { display: block; padding: 4px 8px; }
+    .log-table tr { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .log-table tr td:last-child, .log-table tr td:first-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <div class="logo"><span class="sq"></span>Double Check</div>
+    <nav>
+      <a href="#" class="nav-active">Skincare</a>
+      <a href="ingredient-checker.html">Ingredient Checker</a>
+      <a href="#">Makeup</a>
+      <a href="#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="masthead">
+    <div class="masthead-tag">INGREDIENT VERIFICATION LOG</div>
+    <h1>We read the label so you don't have to.</h1>
+    <p class="masthead-sub">Every product here gets the same treatment: the marketing claim, checked against what's actually in the bottle. No sponsored verdicts.</p>
+  </section>
+
+  <div class="case-featured">
+    <div class="case-featured-main">
+      <div class="case-id">CASE 0001 — OPENED THIS WEEK</div>
+      <h2>Garnier Vitamin C + Face Serum</h2>
+      <div class="case-claim">Claim under review: "100X stronger than Vitamin C, dark spots fade in 3 days"</div>
+      <a href="post-garnier-vitamin-c.html" class="case-link">Read the full case file →</a>
+    </div>
+    <div class="stamp">
+      <div class="stamp-inner">VERIFIED*</div>
+    </div>
+  </div>
+
+  <section id="skincare">
+    <div class="section-head">
+      <h2>Case log</h2>
+      <span class="count">2 cases closed</span>
+    </div>
+
+    <table class="log-table">
+      <thead>
+        <tr>
+          <th style="width:70px;">Case</th>
+          <th>Product</th>
+          <th style="width:130px;">Status</th>
+          <th style="width:70px; text-align:right;">Read</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="log-id">0001</td>
+          <td>
+            <a href="post-garnier-vitamin-c.html" class="log-title">Garnier Vitamin C + Face Serum</a>
+            <div class="log-cat">Serums · Brightening</div>
+          </td>
+          <td><span class="status-tag verified">VERIFIED*</span></td>
+          <td class="log-time">7 min</td>
+        </tr>
+        <tr>
+          <td class="log-id">0002</td>
+          <td>
+            <a href="post-niacinamide-serum.html" class="log-title">The niacinamide serum that calmed my redness</a>
+            <div class="log-cat">Serums · Sensitive skin</div>
+          </td>
+          <td><span class="status-tag verified">VERIFIED</span></td>
+          <td class="log-time">6 min</td>
+        </tr>
+        <tr>
+          <td class="log-id">0003</td>
+          <td>
+            <a href="#" class="log-title">Sunscreen dupes that don't leave a white cast, ranked</a>
+            <div class="log-cat">Sunscreen · Comparison</div>
+          </td>
+          <td><span class="status-tag mixed">MIXED</span></td>
+          <td class="log-time">8 min</td>
+        </tr>
+        <tr>
+          <td class="log-id">0004</td>
+          <td>
+            <a href="#" class="log-title">What "fragrance-free" actually means on a label</a>
+            <div class="log-cat">Explainer · Ingredients</div>
+          </td>
+          <td><span class="status-tag flagged">FLAGGED</span></td>
+          <td class="log-time">5 min</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="case-featured" style="margin: 44px 0;">
+    <div class="case-featured-main">
+      <div class="case-id">TOOL — FREE TO USE</div>
+      <h2>Got a product's label handy?</h2>
+      <div class="case-claim" style="border-left-color: var(--green);">Paste any ingredient list and get it checked against the same database we use for every case file.</div>
+      <a href="ingredient-checker.html" class="case-link">Open the Ingredient Checker →</a>
+    </div>
+    <div class="stamp">
+      <div class="stamp-inner">TRY IT</div>
+    </div>
+  </div>
+
+  <div class="cat-strip">
+    <div class="cat-card">
+      <div class="cat-num">FILE A</div>
+      <h4>Budget starter routine</h4>
+      <p>Four products, no guesswork, under ₹500 total.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-num">FILE B</div>
+      <h4>Nothing here will make you react</h4>
+      <p>Fragrance-free picks for skin that punishes everything.</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-num">FILE C</div>
+      <h4>Marketing claims we're still checking</h4>
+      <p>Products with open, unresolved claims — check back.</p>
+    </div>
+  </div>
+
+  <div class="about-block" id="about">
+    <div><h3>The method</h3></div>
+    <div>
+      <p>Every case here follows the same process: read the full ingredient list, check the marketing claim against what's actually formulated, and stamp a verdict — verified, flagged, or mixed. Some links are affiliate links; a small commission is earned if you buy through them, at no extra cost to you. It never changes the verdict. *Verified means the core claim holds up reasonably well, not that every word on the label is literally true — see the case file for the exact caveat.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Double Check — ingredient verification log</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

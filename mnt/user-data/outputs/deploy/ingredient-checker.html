@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingredient Checker — Double Check</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFEBE2; --paper-card: #F7F4EC; --ink: #1E1C18; --ink-soft: #6E6A5F;
+    --red: #B23A2E; --green: #3D6B52; --amber: #9A7B2E; --line: #d9d3c3; --max-w: 820px;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; color: var(--ink); }
+  a { color: var(--red); }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 20px 0; border-bottom: 2px solid var(--ink); }
+  .header-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; text-decoration: none; color: var(--ink); }
+  .logo .sq { display:inline-block; width:8px; height:8px; background:var(--red); margin-right:7px; vertical-align:middle; }
+  nav { display: flex; gap: 22px; font-family: 'Space Grotesk', sans-serif; font-size: 13.5px; font-weight: 500; }
+  nav a { text-decoration: none; padding-bottom: 3px; border-bottom: 2px solid transparent; color: var(--ink); }
+  nav a:hover, nav a.nav-active { border-bottom-color: var(--red); }
+
+  .tool-header { padding: 44px 0 28px; border-bottom: 2px solid var(--ink); }
+  .tool-tag { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: var(--red); margin-bottom: 12px; }
+  .tool-header h1 { font-size: 36px; letter-spacing: -0.01em; margin-bottom: 14px; }
+  .tool-header p { color: var(--ink-soft); font-size: 16px; max-width: 55ch; margin: 0; }
+
+  .input-block { margin: 36px 0; }
+  .input-label { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; letter-spacing: 0.02em; }
+  textarea {
+    width: 100%; min-height: 130px; padding: 16px; border: 2px solid var(--ink); background: var(--paper-card);
+    font-family: 'Newsreader', serif; font-size: 15.5px; color: var(--ink); resize: vertical;
+  }
+  textarea:focus { outline: none; border-color: var(--red); }
+  .input-hint { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); margin-top: 8px; }
+
+  .submit-btn {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 14px;
+    background: var(--ink); color: var(--paper); border: none; padding: 13px 26px;
+    margin-top: 16px; cursor: pointer;
+  }
+  .submit-btn:hover { background: var(--red); }
+
+  #results { display: none; margin-top: 44px; }
+
+  .summary-stamp-row {
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
+    border: 2px solid var(--ink); padding: 22px 26px; margin-bottom: 32px; background: var(--paper-card);
+  }
+  .summary-stamp {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px;
+    border: 3px solid var(--ink); padding: 9px 14px; transform: rotate(-6deg); white-space: nowrap; text-align: center;
+  }
+  .summary-stamp.clean { border-color: var(--green); color: var(--green); }
+  .summary-stamp.caution { border-color: var(--amber); color: var(--amber); }
+  .summary-stamp.flagged { border-color: var(--red); color: var(--red); }
+  .summary-stamp.severe { background: var(--red); color: var(--paper); border-color: var(--red); }
+  .summary-text { font-size: 15px; color: var(--ink-soft); margin: 0; }
+  .summary-counts { font-family: 'Space Grotesk', sans-serif; font-size: 13px; margin-top: 6px; }
+  .summary-counts span { margin-right: 14px; }
+
+  .result-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  .result-table th {
+    text-align: left; font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600;
+    background: var(--ink); color: var(--paper); padding: 10px 12px;
+  }
+  .result-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); color: var(--ink-soft); vertical-align: top; }
+  .result-table tr:nth-child(even) td { background: var(--paper-card); }
+  .status-tag {
+    font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600;
+    padding: 3px 8px; border: 1.5px solid currentColor; white-space: nowrap; display: inline-block;
+  }
+  .status-tag.verified { color: var(--green); }
+  .status-tag.flagged { color: var(--red); }
+  .status-tag.mixed { color: var(--amber); }
+  .status-tag.unknown { color: var(--ink-soft); border-style: dashed; }
+  .status-tag.severe { background: var(--red); color: var(--paper); border-color: var(--red); }
+
+  .unmatched-note { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); margin-top: 16px; border-left: 3px solid var(--line); padding-left: 14px; }
+
+  .about-note { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--ink); font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); }
+
+  footer { border-top: 2px solid var(--ink); padding: 20px 0 36px; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); margin-top: 40px; }
+
+  @media (max-width: 600px) {
+    .tool-header h1 { font-size: 27px; }
+    .summary-stamp-row { grid-template-columns: 1fr; }
+    .result-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a href="index.html" class="logo"><span class="sq"></span>Double Check</a>
+    <nav>
+      <a href="index.html">Case Log</a>
+      <a href="ingredient-checker.html" class="nav-active">Ingredient Checker</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="tool-header">
+    <div class="tool-tag">INGREDIENT CHECKER — BETA</div>
+    <h1>Paste the label. We'll check it.</h1>
+    <p>Copy the ingredient list off any skincare product and paste it below. We'll flag common irritants, fragrance allergens, and actives worth knowing about — based on the same ingredients we research for every case file.</p>
+  </div>
+
+  <div class="input-block">
+    <div class="input-label">INGREDIENT LIST</div>
+    <textarea id="ingredientInput" placeholder="e.g. Aqua, Niacinamide, Glycerin, Salicylic Acid, Parfum, Phenoxyethanol, Linalool..."></textarea>
+    <div class="input-hint">Separate ingredients with commas — paste it exactly as it appears on the box.</div>
+    <button class="submit-btn" onclick="checkIngredients()">Check ingredients →</button>
+  </div>
+
+  <div id="results">
+    <div class="summary-stamp-row">
+      <div class="summary-stamp" id="summaryStamp">—</div>
+      <div>
+        <p class="summary-text" id="summaryText"></p>
+        <div class="summary-counts" id="summaryCounts"></div>
+      </div>
+    </div>
+
+    <table class="result-table">
+      <thead>
+        <tr><th style="width:34%;">Ingredient</th><th style="width:16%;">Status</th><th>Note</th></tr>
+      </thead>
+      <tbody id="resultBody"></tbody>
+    </table>
+
+    <div class="unmatched-note" id="unmatchedNote"></div>
+  </div>
+
+  <div class="about-note">
+    This tool checks against a curated reference list of ~90 commonly discussed skincare ingredients, built from general cosmetic-chemistry consensus. It is a starting point, not a lab test, a medical opinion, or a guarantee — an ingredient marked "verified" isn't guaranteed to suit your specific skin, and one marked "flagged" doesn't mean it's unsafe for everyone. Reactions are individual. For a deeper, more exhaustive check, see <a href="https://incidecoder.com" target="_blank" rel="noopener">INCI Decoder</a> or the EU's <a href="https://ec.europa.eu/growth/tools-databases/cosing/" target="_blank" rel="noopener">CosIng database</a>. If you have known allergies or a diagnosed skin condition, check with a dermatologist directly.
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">Double Check — ingredient verification log</div>
+</footer>
+
+<script>
+// Curated ingredient database. status: "verified" (generally well-tolerated/beneficial),
+// "mixed" (context-dependent, contested, or caution for some skin types), "flagged" (common irritant or allergen).
+// Sourced from general cosmetic-chemistry consensus and cosmetic safety panel assessments (e.g. CIR).
+// This is a starting-point reference, not a substitute for a dermatologist or a full safety database.
+const INGREDIENT_DB = {
+  // Hydrators / humectants
+  "hyaluronic acid": { status: "verified", note: "Hydrating humectant, suits most skin types." },
+  "sodium hyaluronate": { status: "verified", note: "Smaller-molecule form of hyaluronic acid, hydrating." },
+  "glycerin": { status: "verified", note: "Classic, well-tolerated humectant." },
+  "glycerol": { status: "verified", note: "Same as glycerin — well-tolerated humectant." },
+  "propylene glycol": { status: "mixed", note: "Humectant; can irritate very sensitive or eczema-prone skin in some people." },
+  "butylene glycol": { status: "verified", note: "Lightweight humectant/solvent, generally well-tolerated." },
+  "sodium pca": { status: "verified", note: "Natural moisturizing factor component, hydrating." },
+  "urea": { status: "verified", note: "Hydrating and mildly exfoliating at low concentrations, can sting broken skin." },
+  "betaine": { status: "verified", note: "Gentle humectant derived from sugar beets." },
+  "panthenol": { status: "verified", note: "Soothing, hydrating provitamin B5, generally well-tolerated." },
+  "allantoin": { status: "verified", note: "Calming, used for sensitive/irritated skin." },
+
+  // Barrier / lipids
+  "ceramide": { status: "verified", note: "Supports and repairs the skin barrier." },
+  "ceramide np": { status: "verified", note: "Barrier-supporting lipid, well-tolerated." },
+  "cholesterol": { status: "verified", note: "Barrier lipid, works alongside ceramides." },
+  "squalane": { status: "verified", note: "Lightweight emollient, rarely causes issues." },
+  "shea butter": { status: "verified", note: "Rich emollient, can feel heavy for oily skin but rarely irritating." },
+  "jojoba oil": { status: "verified", note: "Lightweight, close to skin's natural sebum, low comedogenic risk." },
+  "mineral oil": { status: "mixed", note: "Forms an occlusive barrier; can feel heavy or contribute to congestion for acne-prone skin, though considered safe by cosmetic panels at cosmetic grade." },
+  "petrolatum": { status: "verified", note: "Highly occlusive, effective barrier repair, low irritation risk despite its reputation." },
+  "lanolin": { status: "mixed", note: "Effective emollient, but a known contact allergen for a minority of users." },
+  "dimethicone": { status: "mixed", note: "Silicone that smooths texture; some find it causes buildup or breakouts." },
+  "cyclopentasiloxane": { status: "mixed", note: "Silicone, generally well-tolerated but some prefer to avoid due to environmental concerns." },
+
+  // Actives — exfoliants
+  "salicylic acid": { status: "mixed", note: "Effective BHA exfoliant, can irritate sensitive or dry skin." },
+  "glycolic acid": { status: "mixed", note: "Effective AHA exfoliant, increases sun sensitivity." },
+  "lactic acid": { status: "mixed", note: "Gentler AHA, still increases sun sensitivity." },
+  "mandelic acid": { status: "verified", note: "Gentler, larger-molecule AHA, lower irritation than glycolic." },
+  "polyhydroxy acid": { status: "verified", note: "Gentlest exfoliating acid class, good for sensitive skin." },
+  "gluconolactone": { status: "verified", note: "A gentle PHA exfoliant, low irritation." },
+  "papain": { status: "mixed", note: "Enzyme exfoliant from papaya, can irritate sensitive skin." },
+
+  // Actives — brightening / anti-aging
+  "niacinamide": { status: "verified", note: "Well-tolerated, supports barrier and evens tone." },
+  "retinol": { status: "mixed", note: "Effective anti-aging active, common purging/irritation during adjustment." },
+  "retinal": { status: "mixed", note: "Faster-acting retinoid, more potent than retinol, higher irritation risk." },
+  "retinyl palmitate": { status: "verified", note: "Milder, less irritating form of Vitamin A." },
+  "bakuchiol": { status: "verified", note: "Plant-derived retinol alternative, gentler on skin." },
+  "ascorbic acid": { status: "mixed", note: "Potent Vitamin C, can be unstable and irritating at high concentration." },
+  "3-o-ethyl ascorbic acid": { status: "verified", note: "Stable, gentler Vitamin C derivative." },
+  "sodium ascorbyl phosphate": { status: "verified", note: "Stable, gentle Vitamin C derivative, low irritation." },
+  "magnesium ascorbyl phosphate": { status: "verified", note: "Stable, gentle Vitamin C derivative." },
+  "kojic acid": { status: "mixed", note: "Brightening agent, can be irritating/sensitizing for some users." },
+  "arbutin": { status: "verified", note: "Gentle brightening agent, generally well-tolerated." },
+  "alpha arbutin": { status: "verified", note: "Gentle brightening agent, low irritation." },
+  "tranexamic acid": { status: "verified", note: "Brightening active for pigmentation, generally well-tolerated." },
+  "azelaic acid": { status: "verified", note: "Treats acne and redness, generally well-tolerated even for sensitive skin." },
+  "peptide": { status: "verified", note: "Generally well-tolerated, supports collagen signaling." },
+  "adenosine": { status: "verified", note: "Soothing, supports barrier repair." },
+
+  // Acne / actives
+  "benzoyl peroxide": { status: "mixed", note: "Effective for acne, can bleach fabric and dry out skin." },
+  "sulfur": { status: "mixed", note: "Effective for acne, distinct smell, can be drying." },
+  "tea tree oil": { status: "mixed", note: "Natural antibacterial, can irritate or sensitize with regular use." },
+
+  // Sunscreen filters
+  "zinc oxide": { status: "verified", note: "Physical sunscreen filter, gentle for most skin types." },
+  "titanium dioxide": { status: "verified", note: "Physical sunscreen filter, generally well-tolerated." },
+  "avobenzone": { status: "verified", note: "Common chemical UV filter, effective and widely used." },
+  "octinoxate": { status: "mixed", note: "Chemical UV filter; some regions restrict it over reef/environmental concerns." },
+  "oxybenzone": { status: "mixed", note: "Chemical UV filter; banned in some regions over reef/environmental and hormone-disruption concerns." },
+  "homosalate": { status: "mixed", note: "Chemical UV filter, generally considered safe, some ongoing regulatory review in the EU." },
+
+  // Preservatives
+  "phenoxyethanol": { status: "verified", note: "Widely used, well-tolerated preservative." },
+  "sodium benzoate": { status: "verified", note: "Common, generally well-tolerated preservative." },
+  "potassium sorbate": { status: "verified", note: "Common, generally well-tolerated preservative." },
+  "parabens": { status: "mixed", note: "Preservative; cosmetic safety panels generally consider low concentrations safe, though it remains a debated topic due to hormone-disruption studies." },
+  "methylparaben": { status: "mixed", note: "Preservative; considered safe at regulated concentrations by safety panels, still debated by some researchers." },
+  "propylparaben": { status: "mixed", note: "Preservative; considered safe at regulated concentrations, still debated by some researchers." },
+  "methylisothiazolinone": { status: "flagged", note: "Preservative linked to allergic contact dermatitis in some users." },
+  "formaldehyde": { status: "flagged", note: "Preservative-releasing ingredient, common sensitizer for some users." },
+  "peg-100 stearate": { status: "mixed", note: "PEG emulsifier; a cosmetic safety panel flagged some PEG compounds as unsuitable for damaged/broken skin specifically." },
+
+  // Surfactants / cleansers
+  "sodium lauryl sulfate": { status: "flagged", note: "Strong surfactant, can strip natural oils and irritate skin." },
+  "sodium laureth sulfate": { status: "mixed", note: "Gentler than SLS, but can still be drying for sensitive skin." },
+  "cocamidopropyl betaine": { status: "mixed", note: "Common gentle surfactant, but a known contact allergen for a minority of users." },
+  "decyl glucoside": { status: "verified", note: "Gentle, plant-derived surfactant, low irritation." },
+  "coco glucoside": { status: "verified", note: "Gentle, plant-derived surfactant, low irritation." },
+
+  // Alcohols
+  "denatured alcohol": { status: "mixed", note: "Can be drying for some skin types, evaporates quickly for others." },
+  "alcohol denat": { status: "mixed", note: "Can be drying for some skin types, evaporates quickly for others." },
+  "cetyl alcohol": { status: "verified", note: "Fatty alcohol, emollient and thickening, not drying despite the name." },
+  "stearyl alcohol": { status: "verified", note: "Fatty alcohol, emollient, not drying." },
+  "benzyl alcohol": { status: "mixed", note: "Preservative/fragrance ingredient, can be a sensitizer for some." },
+  "cetearyl alcohol": { status: "verified", note: "Blend of cetyl and stearyl fatty alcohols — emollient/thickener, not drying." },
+  "ceteareth 20": { status: "mixed", note: "PEG-type emulsifier; generally mild, but this class is sometimes flagged as unsuitable for broken/damaged skin specifically." },
+  "stearic acid": { status: "verified", note: "Fatty acid used as an emulsifier/thickener, low irritation risk." },
+  "triethylene glycol": { status: "verified", note: "Humectant/solvent similar to propylene or butylene glycol, generally low irritation." },
+
+  // Fragrance / allergens
+  "parfum": { status: "flagged", note: "Common cause of irritation and allergic reaction, especially for sensitive skin." },
+  "fragrance": { status: "flagged", note: "Common cause of irritation and allergic reaction, especially for sensitive skin." },
+  "essential oil": { status: "mixed", note: "Natural but a common source of irritation and sensitization." },
+  "linalool": { status: "flagged", note: "EU-listed fragrance allergen, present in many scented products." },
+  "limonene": { status: "flagged", note: "EU-listed fragrance allergen, present in many scented products." },
+  "geraniol": { status: "flagged", note: "EU-listed fragrance allergen." },
+  "citronellol": { status: "flagged", note: "EU-listed fragrance allergen." },
+  "coumarin": { status: "flagged", note: "EU-listed fragrance allergen." },
+  "eugenol": { status: "flagged", note: "EU-listed fragrance allergen." },
+  "citral": { status: "flagged", note: "EU-listed fragrance allergen." },
+
+  // Antioxidants / plant extracts
+  "tocopherol": { status: "verified", note: "Vitamin E, antioxidant, generally well-tolerated." },
+  "green tea extract": { status: "verified", note: "Antioxidant, soothing, well-tolerated." },
+  "centella asiatica": { status: "verified", note: "Soothing, barrier-supporting plant extract." },
+  "aloe vera": { status: "verified", note: "Soothing, hydrating, well-tolerated for most." },
+  "witch hazel": { status: "mixed", note: "Can be drying/irritating depending on alcohol content in the formulation." },
+  "chamomile extract": { status: "verified", note: "Soothing, generally well-tolerated, rare allergen for ragweed-sensitive people." },
+  "niacin": { status: "mixed", note: "Different from niacinamide — can cause a temporary flushing reaction." },
+
+  // Base / texture
+  "aqua": { status: "verified", note: "Water — the base of most formulations." },
+  "water": { status: "verified", note: "The base of most formulations." },
+  "xanthan gum": { status: "verified", note: "Texture-thickening agent, rarely causes issues." },
+  "carbomer": { status: "verified", note: "Gel-forming agent, inert and well-tolerated." },
+  "citric acid": { status: "verified", note: "Used to adjust pH, generally well-tolerated at low levels." },
+  "sodium hydroxide": { status: "verified", note: "Used in tiny amounts to adjust pH, not a concern at formulation levels." },
+  "triethanolamine": { status: "mixed", note: "pH adjuster, generally fine at low levels, occasional sensitizer." },
+
+  // Talc / mica (makeup crossover)
+  "talc": { status: "mixed", note: "Common texture agent; safe in cosmetic-grade form, historically debated due to contamination concerns in some sourcing." },
+  "mica": { status: "verified", note: "Mineral shimmer/texture agent, generally well-tolerated." },
+
+  // Hair color / hair chemistry
+  "p-phenylenediamine": { status: "severe", note: "A well-documented cause of severe allergic reactions, including rare cases of anaphylaxis. Manufacturers require a 48-hour patch test before use — take that seriously." },
+  "phenylenediamine": { status: "severe", note: "A well-documented cause of severe allergic reactions, including rare cases of anaphylaxis. Manufacturers require a 48-hour patch test before use — take that seriously." },
+  "ppd": { status: "severe", note: "A well-documented cause of severe allergic reactions, including rare cases of anaphylaxis. Manufacturers require a 48-hour patch test before use — take that seriously." },
+  "m-aminophenol": { status: "severe", note: "A PPD-related coupler used in permanent hair color, carries similar allergy risk to PPD itself." },
+  "p-aminophenol": { status: "severe", note: "A PPD-related coupler used in permanent hair color, carries similar allergy risk to PPD itself." },
+  "2,4-diaminophenoxyethanol hcl": { status: "severe", note: "A PPD-related coupler used in permanent hair color, carries similar allergy risk to PPD itself." },
+  "resorcinol": { status: "mixed", note: "Common in permanent hair color, a known potential skin sensitizer and possible endocrine-disruption concern under ongoing research." },
+  "ammonia": { status: "mixed", note: "Raises hair cuticle for permanent color to penetrate; strong odor, can irritate eyes and airways during application." },
+  "hydrogen peroxide": { status: "mixed", note: "The developer/oxidizer in permanent hair color; can irritate skin, eyes, and scalp on contact." },
+  "ethanolamine": { status: "mixed", note: "Alkalizing agent in hair color developers, can be irritating to skin and eyes." },
+  "sodium metabisulfite": { status: "mixed", note: "Preservative/antioxidant; a known trigger for people with sulfite sensitivity or asthma." },
+  "pentasodium pentetate": { status: "verified", note: "A chelating agent that stabilizes formulas, low irritation risk." },
+  "tetrasodium pyrophosphate": { status: "verified", note: "A buffering/chelating agent, low irritation risk." },
+  "phosphoric acid": { status: "verified", note: "Used in small amounts to adjust pH, not a concern at formulation levels." },
+  "ceteareth 25": { status: "mixed", note: "PEG-type emulsifier; generally mild, but this class is sometimes flagged as unsuitable for broken/damaged skin specifically." },
+  "sweet almond oil": { status: "mixed", note: "Nourishing emollient, but a genuine concern if you have a tree nut allergy." },
+  "trideceth-2 carboxamide mea": { status: "verified", note: "A mild surfactant/emulsifier used in hair color developers, low irritation risk." },
+  "toluene-2,5-diamine": { status: "severe", note: "A PPD-related hair color ingredient with a similar documented allergy risk profile — patch testing is recommended." },
+
+  // Botanical / Ayurvedic (naming differs from standard INCI — added where genuinely well-documented)
+  "ashwagandha": { status: "verified", note: "Well-documented adaptogenic herb, generally well-tolerated topically." },
+  "withania somnifera": { status: "verified", note: "Botanical name for Ashwagandha — generally well-tolerated topically." },
+  "vetiver": { status: "mixed", note: "Traditional root extract; like other aromatic plant materials, carries a small contact-sensitization risk for some users." },
+  "vetiveria zizanioides": { status: "mixed", note: "Botanical name for Vetiver/Ushira — small contact-sensitization risk, like other aromatic plant materials." },
+  "olive oil": { status: "verified", note: "Well-documented emollient, generally safe, though can be comedogenic for acne-prone skin." },
+  "olea europaea": { status: "verified", note: "Botanical name for Olive Oil — generally safe emollient, can be comedogenic for acne-prone skin." },
+  "cyperus rotundus": { status: "verified", note: "Traditional cooling herb (Nagarmotha), generally considered low-risk topically." },
+  "hibiscus rosa-sinensis": { status: "verified", note: "Hibiscus flower extract, a traditional hair-care staple, generally well-tolerated." },
+  "eclipta alba": { status: "verified", note: "Bhringraj — extensively used in Ayurvedic hair care, generally well-tolerated topically." },
+  "emblica officinalis": { status: "verified", note: "Amla / Indian gooseberry — well-documented, vitamin C-rich, generally safe topically." },
+  "bacopa monneiri": { status: "verified", note: "Brahmi — well-documented traditional herb, generally well-tolerated topically." },
+  "bacopa monnieri": { status: "verified", note: "Brahmi — well-documented traditional herb, generally well-tolerated topically." },
+  "acacia concinna": { status: "mixed", note: "Shikakai — traditional natural cleanser; contains saponins that can be mildly drying with regular use." },
+  "curcuma zedoaria": { status: "mixed", note: "White turmeric — traditionally used topically; can temporarily stain skin, less standardized safety data than turmeric itself." },
+  "hibiscus abelmoschus": { status: "mixed", note: "Ambrette seed — an aromatic botanical used like a natural musk in fragrance, carries similar sensitization risk to other fragrance materials." },
+  "mentha": { status: "mixed", note: "Mint extract — cooling effect, can cause tingling or irritation on sensitive scalp/skin." },
+  "cinnamomum camphora": { status: "flagged", note: "Camphor — a documented skin irritant with real toxicity concerns, especially if ingested by children. Contraindicated on broken or irritated skin." },
+
+  // Hair care surfactants, conditioning agents, and silicones
+  "sodium lauroyl methyl isethionate": { status: "verified", note: "Mild sulfate-free surfactant, popular in gentle cleansers, low irritation." },
+  "cocamidopropyl hydroxysultaine": { status: "verified", note: "Amphoteric surfactant, generally milder than cocamidopropyl betaine, low irritation." },
+  "disodium laureth sulfosuccinate": { status: "verified", note: "Mild anionic surfactant, often used in sensitive-skin and baby formulas." },
+  "hydrolyzed polyquaternium-10": { status: "verified", note: "Conditioning polymer used for detangling, generally low irritation." },
+  "polyquaternium-7": { status: "verified", note: "Conditioning polymer, generally well-tolerated." },
+  "bis-aminopropyl diglycol dimaleate": { status: "mixed", note: "A bond-building ingredient used in hair-repair treatments; newer and less extensively documented in consumer safety literature, though no major concerns reported." },
+  "sodium c14-16 olefin sulfonate": { status: "mixed", note: "A fairly strong anionic cleansing surfactant, can be drying for some with regular use." },
+  "peg-120 methyl glucose dioleate": { status: "mixed", note: "PEG-based emulsifier; this ingredient class carries general PEG-related manufacturing-impurity caution." },
+  "behentrimonium chloride": { status: "verified", note: "Cationic conditioning agent common in conditioners, generally safe and effective at cosmetic concentrations." },
+  "dimethiconol": { status: "mixed", note: "A silicone; like dimethicone, some find it causes product buildup over time." },
+  "amodimethicone": { status: "mixed", note: "A conditioning silicone with more targeted deposition than regular dimethicone, generally less buildup, but still a silicone." },
+  "sodium cocoyl glycinate": { status: "verified", note: "Amino-acid-based surfactant, very gentle, popular in low-irritation cleansers." },
+  "lauryl glucoside": { status: "verified", note: "Plant-derived, gentle nonionic surfactant, well-tolerated." },
+  "glycol distearate": { status: "verified", note: "Pearlizing agent used for visual texture in shampoos, generally inert and low irritation." },
+  "hydrolyzed wheat protein pg-propyl silanetriol": { status: "mixed", note: "Wheat-protein/silicone hybrid for hair strengthening; low irritation for most, but worth noting if you have a wheat or gluten contact allergy." },
+  "guar hydroxypropyltrimonium chloride": { status: "verified", note: "Cationic guar gum derivative, common gentle conditioning agent." },
+  "dipalmitoylethyl hydroxyethylmonium methosulfate": { status: "mixed", note: "A quaternary conditioning agent; functionally similar to other well-tolerated quats, though less specific safety literature is available." },
+  "disodium cocoyl glutamate": { status: "verified", note: "Amino-acid-based surfactant, very gentle, low irritation." },
+  "sodium lauroamphoacetate": { status: "verified", note: "Amphoteric surfactant, gentle, often used in sensitive-skin formulas." },
+  "peg-7 glyceryl cocoate": { status: "mixed", note: "PEG-based emulsifier; this ingredient class carries general PEG-related manufacturing-impurity caution." },
+  "stearamidopropyl dimethylamine": { status: "verified", note: "A gentler alternative to quaternary conditioning agents, generally well-tolerated." },
+  "hydroxystearic acid": { status: "verified", note: "Fatty acid derivative used as a thickener/stabilizer, low irritation." },
+  "sodium methyl cocoyl taurate": { status: "verified", note: "Mild anionic surfactant, gentle cleansing profile." },
+  "sodium cocoyl isethionate": { status: "verified", note: "Well-documented gentle surfactant, used in classic mild cleansing bars." },
+  "peg-150 pentaerythrityl tetrastearate": { status: "mixed", note: "PEG-based thickener; this ingredient class carries general PEG-related manufacturing-impurity caution." },
+  "cetrimonium chloride": { status: "verified", note: "Cationic conditioning agent common in conditioners, low irritation at cosmetic-use concentrations." },
+  "panthenyl hydroxypropyl steardimonium chloride": { status: "verified", note: "A panthenol-derived conditioning agent, generally gentle given its panthenol base." },
+  "propylene glycol dicaprylate/dicaprate": { status: "verified", note: "Lightweight emollient ester, generally non-irritating." },
+
+  // Additional surfactants
+  "ammonium lauryl sulfate": { status: "flagged", note: "Strong anionic surfactant, similar profile to SLS — can strip natural oils and irritate skin." },
+  "ammonium laureth sulfate": { status: "mixed", note: "Gentler than ammonium lauryl sulfate, but can still be drying for sensitive skin." },
+  "caprylyl glucoside": { status: "verified", note: "Gentle, plant-derived nonionic surfactant, low irritation." },
+  "capryl glucoside": { status: "verified", note: "Gentle, plant-derived nonionic surfactant, low irritation." },
+  "peg-80 sorbitan laurate": { status: "mixed", note: "PEG-based surfactant; this ingredient class carries general PEG-related manufacturing-impurity caution." },
+  "sodium cocoamphoacetate": { status: "verified", note: "Amphoteric surfactant, gentle, low irritation." },
+  "disodium cocoamphodiacetate": { status: "verified", note: "Amphoteric surfactant, gentle, low irritation." },
+  "potassium cocoate": { status: "mixed", note: "Traditional soap base — higher pH than modern syndet surfactants, can be drying with regular use." },
+  "potassium olivate": { status: "mixed", note: "Olive-oil-based soap — higher pH than modern syndet surfactants, can be drying with regular use." },
+  "castile soap": { status: "mixed", note: "Traditional saponified soap — higher pH, can be drying for skin and hair with regular use despite its natural reputation." },
+
+  // Additional conditioning agents / silicones
+  "dimethicone copolyol": { status: "mixed", note: "Water-soluble silicone, generally less buildup than standard dimethicone, still a silicone." },
+  "isododecane": { status: "verified", note: "Lightweight volatile silicone-alternative solvent, low irritation." },
+  "hydrogenated ethylhexyl olivate": { status: "verified", note: "Plant-derived silicone alternative, generally well-tolerated." },
+  "hydrogenated olive oil unsaponifiables": { status: "verified", note: "Plant-derived emollient, generally well-tolerated." },
+  "polyquaternium-81": { status: "verified", note: "Conditioning polymer, generally low irritation." },
+  "polyquaternium-10": { status: "verified", note: "Conditioning polymer used for detangling, generally low irritation." },
+  "ceramide ap": { status: "verified", note: "Barrier-supporting lipid, well-tolerated." },
+  "ceramide eop": { status: "verified", note: "Barrier-supporting lipid, well-tolerated." },
+  "phytosphingosine": { status: "verified", note: "Barrier-supporting lipid, generally well-tolerated." },
+
+  // Oils, butters, botanicals (Latin names added directly so labeling variants like "... Kernel Oil" or "... Leaf Extract" still match)
+  "argania spinosa": { status: "verified", note: "Argan oil — well-documented emollient, low irritation." },
+  "argan oil": { status: "verified", note: "Well-documented emollient, low irritation." },
+  "simmondsia chinensis": { status: "verified", note: "Jojoba oil — lightweight, close to skin's natural sebum, low comedogenic risk." },
+  "cocos nucifera": { status: "mixed", note: "Coconut oil — well-tolerated for most, but known to be comedogenic for acne-prone skin." },
+  "coconut oil": { status: "mixed", note: "Well-tolerated for most, but known to be comedogenic for acne-prone skin." },
+  "prunus amygdalus dulcis": { status: "mixed", note: "Sweet almond oil — nourishing emollient, but a genuine concern if you have a tree nut allergy." },
+  "vitis vinifera": { status: "verified", note: "Grapeseed oil — lightweight, low comedogenic risk, generally well-tolerated." },
+  "grapeseed oil": { status: "verified", note: "Lightweight, low comedogenic risk, generally well-tolerated." },
+  "sclerocarya birrea": { status: "verified", note: "Marula oil — generally well-tolerated, lightweight emollient." },
+  "marula oil": { status: "verified", note: "Generally well-tolerated, lightweight emollient." },
+  "ricinus communis": { status: "mixed", note: "Castor oil — thick, occlusive emollient; rare cases of allergic contact dermatitis reported." },
+  "castor oil": { status: "mixed", note: "Thick, occlusive emollient; rare cases of allergic contact dermatitis reported." },
+  "butyrospermum parkii": { status: "verified", note: "Shea butter — rich emollient, can feel heavy for oily skin but rarely irritating." },
+  "aloe barbadensis": { status: "verified", note: "Aloe Vera — soothing, hydrating, well-tolerated for most." },
+  "rosmarinus officinalis": { status: "verified", note: "Rosemary — antioxidant botanical, generally well-tolerated in extract/water form." },
+  "chamomilla recutita": { status: "verified", note: "Chamomile — soothing, generally well-tolerated, rare allergen for ragweed-sensitive people." },
+  "chamomile": { status: "verified", note: "Soothing, generally well-tolerated, rare allergen for ragweed-sensitive people." },
+  "camellia sinensis": { status: "verified", note: "Green tea — antioxidant, soothing, well-tolerated." },
+  "urtica dioica": { status: "verified", note: "Nettle — mild astringent botanical, generally well-tolerated." },
+  "melaleuca alternifolia": { status: "mixed", note: "Tea tree — natural antibacterial, can irritate or sensitize with regular use." },
+  "tea tree": { status: "mixed", note: "Natural antibacterial, can irritate or sensitize with regular use." },
+  "calendula officinalis": { status: "verified", note: "Calendula — soothing botanical extract, generally well-tolerated." },
+  "calendula": { status: "verified", note: "Soothing botanical extract, generally well-tolerated." },
+  "marshmallow root": { status: "verified", note: "Soothing, demulcent botanical with long traditional use for calming irritated skin." },
+  "althaea officinalis": { status: "verified", note: "Marshmallow root — soothing, demulcent botanical, traditional calming use." },
+  "beta-glucan": { status: "verified", note: "Soothing, barrier-supporting ingredient, popular in sensitive-skin formulas." },
+  "sunflower oil": { status: "verified", note: "Linoleic-acid rich, gentle, low comedogenic risk — well-suited to sensitive skin." },
+  "helianthus annuus": { status: "verified", note: "Sunflower oil — gentle, low comedogenic risk." },
+  "avocado oil": { status: "mixed", note: "Rich emollient, generally well-tolerated, but can feel heavy or comedogenic for acne-prone skin." },
+  "sodium cocoyl glutamate": { status: "verified", note: "Amino-acid-based surfactant, very gentle, low irritation." },
+  "sodium lauroyl oat amino acids": { status: "verified", note: "Gentle amino-acid-based surfactant, often used in sensitive-skin and baby formulas." },
+  "sodium cocoate": { status: "mixed", note: "Traditional saponified soap base — higher pH than modern syndet surfactants, can be drying with regular use." },
+  "sodium palmate": { status: "mixed", note: "Traditional soap base — higher pH, can be drying with regular use." },
+  "sodium palm kernelate": { status: "mixed", note: "Traditional soap base — higher pH, can be drying with regular use." },
+  "guar gum": { status: "verified", note: "Plant-derived thickener, low irritation." },
+  "cyamopsis tetragonoloba": { status: "verified", note: "Botanical name for guar gum — low irritation thickener." },
+  "glyceryl oleate": { status: "verified", note: "Emulsifier that mimics skin's natural lipids, generally well-tolerated." },
+  "peg-150 distearate": { status: "mixed", note: "PEG-based thickener; this ingredient class carries general PEG-related manufacturing-impurity caution." },
+  "glyceryl stearate": { status: "verified", note: "Common emulsifier, very well-tolerated, low irritation." },
+  "tetrasodium glutamate diacetate": { status: "verified", note: "Biodegradable chelating agent, generally gentle, low irritation." },
+
+  // Scalp / dandruff actives
+  "zinc pyrithione": { status: "mixed", note: "Effective anti-dandruff active, can be irritating or sensitizing for some with prolonged use." },
+  "ketoconazole": { status: "mixed", note: "Effective antifungal anti-dandruff active, can cause dryness or irritation for some." },
+  "selenium sulfide": { status: "mixed", note: "Effective anti-dandruff active; label cautions against use on broken skin, can irritate eyes/scalp." },
+  "piroctone olamine": { status: "verified", note: "Anti-dandruff active, generally considered gentler than zinc pyrithione." },
+  "coal tar": { status: "flagged", note: "Used for dandruff/psoriasis; has real documented concerns including photosensitization and restricted or banned status in some regions." },
+
+  // Strengthening / repair
+  "hydrolyzed wheat protein": { status: "mixed", note: "Hair-strengthening protein; low irritation for most, but worth noting if you have a wheat or gluten contact allergy." },
+  "hydrolyzed rice protein": { status: "verified", note: "Hair-strengthening protein, low allergy profile generally." },
+  "hydrolyzed keratin": { status: "verified", note: "Hair-strengthening protein, generally well-tolerated." },
+  "hydrolyzed silk": { status: "verified", note: "Hair-strengthening protein, generally well-tolerated." },
+  "biotin": { status: "verified", note: "Vitamin B7, generally well-tolerated topically." },
+  "caffeine": { status: "verified", note: "Mild vasoconstrictor used in scalp products, generally well-tolerated topically." },
+
+  // Baby / tear-free actives
+  "colloidal oatmeal": { status: "verified", note: "Well-documented soothing ingredient, recognized as a skin protectant." },
+  "bisabolol": { status: "verified", note: "Soothing botanical derivative, generally well-tolerated, low allergen profile." },
+  "hydrolyzed milk protein": { status: "mixed", note: "Hair/skin-conditioning protein; low irritation for most, but worth noting for a dairy-protein contact allergy." },
+
+  // Additional humectants
+  "sorbitol": { status: "verified", note: "Common humectant, low irritation." },
+  "propanediol": { status: "verified", note: "Plant-derived glycol, often marketed as a gentler alternative to propylene glycol." },
+  "lactamide mea": { status: "verified", note: "Thickener/humectant, generally low irritation." },
+
+  // Additional thickeners
+  "hydroxyethylcellulose": { status: "verified", note: "Common thickener, inert, low irritation." },
+  "sodium chloride": { status: "verified", note: "Table salt, used as a thickener in surfactant systems, low irritation at cosmetic-use levels." },
+
+  // Additional preservatives / chelators
+  "ethylhexylglycerin": { status: "verified", note: "Mild preservative booster, low irritation." },
+  "dehydroacetic acid": { status: "mixed", note: "Preservative, generally considered safe at low use levels, occasional sensitizer reported." },
+  "methylchloroisothiazolinone": { status: "flagged", note: "Often paired with MIT; a well-documented contact allergen linked to a real rise in reported dermatitis cases." },
+  "disodium edta": { status: "verified", note: "Common chelating agent, low irritation at cosmetic-use levels." },
+  "tetrasodium edta": { status: "verified", note: "Common chelating agent, low irritation at cosmetic-use levels." },
+  "sodium phytate": { status: "verified", note: "Natural chelator, generally well-tolerated alternative to EDTA." }
+};
+
+// Common alternate names/aliases that map to a canonical entry above.
+const ALIASES = {
+  "vitamin c": "ascorbic acid",
+  "vitamin e": "tocopherol",
+  "vitamin b3": "niacinamide",
+  "vitamin b5": "panthenol",
+  "provitamin b5": "panthenol",
+  "sls": "sodium lauryl sulfate",
+  "sles": "sodium laureth sulfate",
+  "aha": "glycolic acid",
+  "bha": "salicylic acid",
+  "hyaluronate": "sodium hyaluronate",
+  "cica": "centella asiatica",
+  "green tea": "green tea extract",
+  "paraben": "parabens",
+  "ceteareth-20": "ceteareth 20",
+  "ceteareth-25": "ceteareth 25",
+  "para-phenylenediamine": "p-phenylenediamine",
+  "kumari": "aloe vera",
+  "ushira": "vetiver",
+  "jaitun": "olive oil",
+  "oil jaitun": "olive oil",
+  "camphor": "cinnamomum camphora",
+  "mentha sp": "mentha",
+  "brahmi": "bacopa monnieri",
+  "bhringraj": "eclipta alba",
+  "amla": "emblica officinalis",
+  "shikakai": "acacia concinna",
+  "nagarmotha": "cyperus rotundus",
+  "coco-glucoside": "coco glucoside"
+};
+
+function normalize(str) {
+  let s = str.toLowerCase().trim();
+  s = s.replace(/\(.*?\)/g, '');       // remove parenthetical notes
+  s = s.replace(/[\d.]+%/g, '');       // remove percentages like "2%"
+  s = s.replace(/[*]/g, '');           // remove asterisks
+  s = s.replace(/\s+/g, ' ').trim();   // collapse whitespace
+  return s;
+}
+
+function lookup(key) {
+  if (INGREDIENT_DB[key]) return INGREDIENT_DB[key];
+  if (ALIASES[key] && INGREDIENT_DB[ALIASES[key]]) return INGREDIENT_DB[ALIASES[key]];
+  // Loose partial match as a last resort (e.g. "niacinamide 5%" already stripped, but catches
+  // things like "fragrance (parfum)" where normalize left a compound phrase).
+  const dbKeys = Object.keys(INGREDIENT_DB);
+  const partial = dbKeys.find(k => key.includes(k) || k.includes(key));
+  if (partial) return INGREDIENT_DB[partial];
+  return null;
+}
+
+function checkIngredients() {
+  const raw = document.getElementById('ingredientInput').value;
+  if (!raw.trim()) return;
+
+  const items = raw.split(',').map(s => s.trim()).filter(Boolean);
+  const resultBody = document.getElementById('resultBody');
+  resultBody.innerHTML = '';
+
+  let counts = { verified: 0, mixed: 0, flagged: 0, severe: 0, unknown: 0 };
+  let unmatched = [];
+
+  items.forEach(item => {
+    const key = normalize(item);
+    const entry = lookup(key);
+    const row = document.createElement('tr');
+
+    if (entry) {
+      counts[entry.status]++;
+      const labels = { verified: 'VERIFIED', mixed: 'MIXED', flagged: 'FLAGGED', severe: 'SEVERE' };
+      row.innerHTML = `<td>${item}</td><td><span class="status-tag ${entry.status}">${labels[entry.status]}</span></td><td>${entry.note}</td>`;
+    } else {
+      counts.unknown++;
+      unmatched.push(item);
+      row.innerHTML = `<td>${item}</td><td><span class="status-tag unknown">NOT LISTED</span></td><td>Not yet in our database — this doesn't mean it's unsafe, just unreviewed.</td>`;
+    }
+    resultBody.appendChild(row);
+  });
+
+  const stamp = document.getElementById('summaryStamp');
+  const summaryText = document.getElementById('summaryText');
+  if (counts.severe > 0) {
+    stamp.textContent = 'CAUTION';
+    stamp.className = 'summary-stamp severe';
+    summaryText.textContent = `This product contains ${counts.severe} ingredient${counts.severe > 1 ? 's' : ''} with a documented risk of severe allergic reaction. A patch test is strongly recommended before full use.`;
+  } else if (counts.flagged > 0) {
+    stamp.textContent = 'FLAGGED';
+    stamp.className = 'summary-stamp flagged';
+    summaryText.textContent = `This product contains ${counts.flagged} ingredient${counts.flagged > 1 ? 's' : ''} commonly linked to irritation or allergic reaction.`;
+  } else if (counts.mixed > 0) {
+    stamp.textContent = 'MIXED';
+    stamp.className = 'summary-stamp caution';
+    summaryText.textContent = `No major red flags, but ${counts.mixed} ingredient${counts.mixed > 1 ? 's' : ''} may need caution depending on your skin type.`;
+  } else {
+    stamp.textContent = 'CLEAN';
+    stamp.className = 'summary-stamp clean';
+    summaryText.textContent = `No commonly flagged irritants or allergens found in this list.`;
+  }
+
+  document.getElementById('summaryCounts').innerHTML =
+    `<span>✓ ${counts.verified} verified</span><span>~ ${counts.mixed} mixed</span><span>✕ ${counts.flagged} flagged</span><span>⚠ ${counts.severe} severe</span><span>? ${counts.unknown} unlisted</span>`;
+
+  const unmatchedNote = document.getElementById('unmatchedNote');
+  unmatchedNote.textContent = unmatched.length
+    ? `Not yet in our database: ${unmatched.join(', ')}. We're adding more ingredients regularly.`
+    : '';
+
+  document.getElementById('results').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
