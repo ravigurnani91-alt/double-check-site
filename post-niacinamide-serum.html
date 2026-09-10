@@ -3,212 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The niacinamide serum that actually calmed my redness — Field Notes</title>
+<title>The niacinamide serum that actually calmed my redness — Double Check</title>
+<meta name="description" content="An honest review of a niacinamide serum for sensitive, redness-prone skin — what worked, what didn't, and who should skip it.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": "Niacinamide Serum",
+    "offers": { "@type": "Offer", "price": "649", "priceCurrency": "INR" }
+  },
+  "reviewBody": "Genuinely calming within the first week, no pilling under sunscreen, and priced low enough to try without overthinking it. Loses points only for a slightly tacky finish if layered too heavily.",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "8.6",
+    "bestRating": "10"
+  },
+  "author": { "@type": "Organization", "name": "Double Check" }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #F5F3EE;
-    --paper-card: #FBFAF7;
-    --ink: #242621;
-    --ink-soft: #57584f;
-    --sage: #7C9885;
-    --sage-deep: #5c7565;
-    --clay: #C0603E;
-    --berry: #7A2F45;
-    --line: #ddd8cc;
-    --max-w: 720px;
+    --paper: #EFEBE2; --paper-card: #F7F4EC; --ink: #1E1C18; --ink-soft: #6E6A5F;
+    --red: #B23A2E; --green: #3D6B52; --amber: #9A7B2E; --line: #d9d3c3; --max-w: 760px;
   }
-
   * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Newsreader', serif; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; margin: 0; color: var(--ink); }
+  a { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+  .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter', sans-serif;
-    font-size: 17px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  h1, h2, h3 {
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    line-height: 1.15;
-    margin: 0;
-    color: var(--ink);
-  }
-
-  a { color: var(--clay); text-decoration: underline; text-underline-offset: 3px; }
-
-  .wrap {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  header {
-    padding: 24px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .logo {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: 22px;
-  }
-  .back {
-    font-size: 14px;
-    color: var(--ink-soft);
-    text-decoration: none;
-  }
+  header { padding: 20px 0; border-bottom: 2px solid var(--ink); }
   .header-row { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; text-decoration: none; color: var(--ink); }
+  .logo .sq { display:inline-block; width:8px; height:8px; background:var(--red); margin-right:7px; vertical-align:middle; }
+  .back { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); text-decoration: none; }
 
-  article { padding: 56px 0 20px; }
-
-  .eyebrow {
-    font-size: 13.5px;
-    color: var(--sage-deep);
-    margin-bottom: 16px;
-  }
-
-  h1.title {
-    font-size: 40px;
-    letter-spacing: -0.01em;
-    margin-bottom: 18px;
-  }
-
-  .meta-row {
-    display: flex;
-    gap: 16px;
-    font-size: 14px;
-    color: var(--ink-soft);
-    margin-bottom: 0;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .product-shot {
-    background: #f1ddd2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px;
-    margin: 32px 0;
-  }
-  .product-shot svg { width: 100px; height: 100px; color: var(--clay); }
-  .product-shot-caption {
-    text-align: center;
-    font-size: 13px;
-    color: var(--ink-soft);
-    margin-top: -18px;
-    margin-bottom: 32px;
-  }
-
-  .verdict-box {
-    background: var(--paper-card);
-    border: 1px solid var(--line);
-    padding: 24px 28px;
-    margin: 32px 0;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 24px;
-    align-items: center;
-  }
-  .verdict-score {
-    font-family: 'Fraunces', serif;
-    font-size: 40px;
-    font-style: italic;
-    color: var(--berry);
-    white-space: nowrap;
-  }
-  .verdict-score span {
-    font-size: 16px;
-    font-style: normal;
-    color: var(--ink-soft);
-  }
-  .verdict-text p {
-    margin: 0;
-    font-size: 15px;
-    color: var(--ink-soft);
-  }
+  .case-header { padding: 40px 0 24px; border-bottom: 2px solid var(--ink); }
+  .case-id { font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--ink-soft); letter-spacing: 0.03em; margin-bottom: 12px; }
+  h1.title { font-size: 34px; letter-spacing: -0.01em; margin-bottom: 16px; }
+  .case-tags { display: flex; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); }
 
   p { margin: 0 0 22px; }
+  h2.sub { font-family: 'Space Grotesk', sans-serif; font-size: 21px; font-weight: 700; margin: 44px 0 16px; }
 
-  h2.sub {
-    font-size: 24px;
-    margin: 44px 0 18px;
+  .verdict-strip {
+    display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;
+    border: 2px solid var(--green); padding: 22px 26px; margin: 32px 0;
   }
+  .verdict-stamp {
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: var(--green);
+    border: 3px solid var(--green); padding: 8px 14px; transform: rotate(-6deg); white-space: nowrap;
+  }
+  .verdict-strip p { margin: 0; font-size: 15px; color: var(--ink-soft); }
 
-  .pros-cons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin: 28px 0;
-  }
-  .pc-col h4 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    margin: 0 0 10px;
-  }
-  .pc-col.pros h4 { color: var(--sage-deep); }
-  .pc-col.cons h4 { color: var(--clay); }
-  .pc-col ul {
-    margin: 0;
-    padding-left: 18px;
-    font-size: 15px;
-    color: var(--ink-soft);
-  }
+  .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 28px 0; }
+  .pc-col h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13.5px; margin: 0 0 10px; letter-spacing: 0.02em; }
+  .pc-col.pros h4 { color: var(--green); }
+  .pc-col.cons h4 { color: var(--red); }
+  .pc-col ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--ink-soft); }
   .pc-col li { margin-bottom: 6px; }
 
-  .cta-box {
-    border: 1px solid var(--line);
-    padding: 26px 28px;
-    margin: 40px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  .cta-box .price {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 22px;
-  }
-  .btn {
-    display: inline-block;
-    background: var(--ink);
-    color: var(--paper);
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none;
-  }
-  .btn:hover { background: var(--clay); }
+  .file-footer { border: 2px solid var(--ink); padding: 24px 26px; margin: 40px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .file-footer .price { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; }
+  .btn { display: inline-block; background: var(--ink); color: var(--paper); padding: 12px 22px; font-family: 'Space Grotesk', sans-serif; font-size: 13.5px; font-weight: 600; text-decoration: none; }
+  .btn:hover { background: var(--red); }
 
-  .disclosure {
-    font-size: 13px;
-    color: var(--ink-soft);
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
-    margin-top: 48px;
-  }
-
-  footer {
-    border-top: 1px solid var(--line);
-    padding: 24px 0 40px;
-    font-size: 13px;
-    color: var(--ink-soft);
-    margin-top: 40px;
-  }
+  .disclosure { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); border-top: 2px solid var(--ink); padding-top: 20px; margin-top: 48px; }
+  footer { border-top: 2px solid var(--ink); padding: 20px 0 36px; font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); margin-top: 30px; }
 
   @media (max-width: 600px) {
-    h1.title { font-size: 30px; }
+    h1.title { font-size: 26px; }
     .pros-cons { grid-template-columns: 1fr; }
-    .verdict-box { grid-template-columns: 1fr; }
+    .verdict-strip { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -216,81 +86,67 @@
 
 <header>
   <div class="wrap header-row">
-    <a href="index.html" class="logo">Field Notes</a>
-    <a href="index.html" class="back">← All reviews</a>
+    <a href="index.html" class="logo"><span class="sq"></span>Double Check</a>
+    <a href="index.html" class="back">← Case log</a>
   </div>
 </header>
 
 <div class="wrap">
-  <article>
-    <div class="eyebrow">Serums · Sensitive skin · 6 min read</div>
+  <div class="case-header">
+    <div class="case-id">CASE 0002 — SERUMS / SENSITIVE SKIN</div>
     <h1 class="title">The niacinamide serum that actually calmed my redness</h1>
-    <div class="meta-row">
-      <span>Skincare</span>
-      <span>Updated this month</span>
+    <div class="case-tags"><span>6 min read</span><span>·</span><span>Updated this month</span></div>
+  </div>
+
+  <p>I've gone through more niacinamide serums than I want to admit, mostly chasing the same promise: less redness, fewer breakouts, and pores that don't look like craters by 3pm. Most of them did nothing noticeable in the first two weeks. This one was different, and it's cheap enough that I'm comfortable saying so without it sounding like a paid line.</p>
+
+  <div class="verdict-strip">
+    <div class="verdict-stamp">VERIFIED</div>
+    <p>Genuinely calming within the first week, no pilling under sunscreen, and priced low enough to try without overthinking it. Loses points only for a slightly tacky finish if you layer too much.</p>
+  </div>
+
+  <h2 class="sub">What it's actually good for</h2>
+  <p>If your skin gets patchy-red through the day, or you deal with visible pores and occasional breakouts without full-blown acne, this sits in a good middle ground. It's not aggressive enough to irritate sensitive skin, but it's concentrated enough that you'll actually see something change — usually within 10 to 14 days of using it morning and night.</p>
+
+  <div class="pros-cons">
+    <div class="pc-col pros">
+      <h4>SUPPORTING EVIDENCE</h4>
+      <ul>
+        <li>Visibly calmer redness within a week</li>
+        <li>Layers well under sunscreen, no pilling</li>
+        <li>No breakouts from the formula itself</li>
+        <li>Priced like a starter product, not a splurge</li>
+      </ul>
     </div>
-
-    <div class="product-shot">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="9" y="3" width="6" height="4" rx="1" fill="currentColor" opacity="0.9"/>
-        <path d="M8 8h8c1 0 1.5 0.5 1.5 1.5v10c0 1-1 2-2 2h-7c-1 0-2-1-2-2v-10c0-1 0.5-1.5 1.5-1.5z" fill="currentColor"/>
-        <rect x="10.3" y="12.5" width="3.4" height="1.4" fill="#f1ddd2"/>
-      </svg>
+    <div class="pc-col cons">
+      <h4>RED FLAGS</h4>
+      <ul>
+        <li>Slightly tacky if you use more than 2-3 drops</li>
+        <li>Packaging pump wastes product early on</li>
+        <li>Not enough alone if you have active cystic acne</li>
+      </ul>
     </div>
-    <div class="product-shot-caption">Product photo placeholder — swap in the real bottle shot before publishing</div>
+  </div>
 
-    <p>I've gone through more niacinamide serums than I want to admit, mostly chasing the same promise: less redness, fewer breakouts, and pores that don't look like craters by 3pm. Most of them did nothing noticeable in the first two weeks. This one was different, and it's cheap enough that I'm comfortable saying so without it sounding like a paid line.</p>
+  <h2 class="sub">How I used it</h2>
+  <p>Two drops, morning and night, after cleansing and before moisturizer. I didn't change anything else in my routine for three weeks so I could actually tell if it was working — no new cleanser, no new sunscreen, nothing else added. That's the only way a review like this means anything.</p>
 
-    <div class="verdict-box">
-      <div class="verdict-score">8.6<span>/10</span></div>
-      <div class="verdict-text">
-        <p>Genuinely calming within the first week, no pilling under sunscreen, and priced low enough to try without overthinking it. Loses points only for a slightly tacky finish if you layer too much.</p>
-      </div>
+  <div class="file-footer">
+    <div>
+      <div class="price">₹649</div>
+      <div style="font-family:'Space Grotesk',sans-serif; font-size:13px; color:var(--ink-soft);">30ml · usually restocks within a few days</div>
     </div>
+    <a href="#" class="btn">Check current price</a>
+  </div>
 
-    <h2 class="sub">What it's actually good for</h2>
-    <p>If your skin gets patchy-red through the day, or you deal with visible pores and occasional breakouts without full-blown acne, this sits in a good middle ground. It's not aggressive enough to irritate sensitive skin, but it's concentrated enough that you'll actually see something change — usually within 10 to 14 days of using it morning and night.</p>
+  <h2 class="sub">Who should skip it</h2>
+  <p>If you're dealing with active cystic acne, this alone won't be enough — you'll want something with salicylic acid or a dermatologist-guided routine alongside it. And if your skin is already very dry, pair it with a heavier moisturizer, since niacinamide on its own can feel a little thin in colder months.</p>
 
-    <div class="pros-cons">
-      <div class="pc-col pros">
-        <h4>What worked</h4>
-        <ul>
-          <li>Visibly calmer redness within a week</li>
-          <li>Layers well under sunscreen, no pilling</li>
-          <li>No breakouts from the formula itself</li>
-          <li>Priced like a starter product, not a splurge</li>
-        </ul>
-      </div>
-      <div class="pc-col cons">
-        <h4>What didn't</h4>
-        <ul>
-          <li>Slightly tacky if you use more than 2-3 drops</li>
-          <li>Packaging pump wastes product early on</li>
-          <li>Not enough alone if you have active cystic acne</li>
-        </ul>
-      </div>
-    </div>
-
-    <h2 class="sub">How I used it</h2>
-    <p>Two drops, morning and night, after cleansing and before moisturizer. I didn't change anything else in my routine for three weeks so I could actually tell if it was working — no new cleanser, no new sunscreen, nothing else added. That's the only way a review like this means anything.</p>
-
-    <div class="cta-box">
-      <div>
-        <div class="price">₹649</div>
-        <div style="font-size:14px; color:var(--ink-soft);">30ml · usually restocks within a few days</div>
-      </div>
-      <a href="#" class="btn">Check current price</a>
-    </div>
-
-    <h2 class="sub">Who should skip it</h2>
-    <p>If you're dealing with active cystic acne, this alone won't be enough — you'll want something with salicylic acid or a dermatologist-guided routine alongside it. And if your skin is already very dry, pair it with a heavier moisturizer, since niacinamide on its own can feel a little thin in colder months.</p>
-
-    <div class="disclosure">This post contains an affiliate link. If you buy through it, I earn a small commission at no extra cost to you — it doesn't change what gets recommended here.</div>
-  </article>
+  <div class="disclosure">This case file contains an affiliate link. If you buy through it, a small commission is earned at no extra cost to you — it does not change the verdict above.</div>
 </div>
 
 <footer>
-  <div class="wrap">Field Notes — skincare, tried and written up</div>
+  <div class="wrap">Double Check — ingredient verification log</div>
 </footer>
 
 </body>

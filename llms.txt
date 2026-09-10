@@ -1,0 +1,19 @@
+# Double Check
+
+> An ingredient verification log for skincare, haircare, and personal care products. Every product review checks the manufacturer's marketing claim against the actual ingredient list, and stamps an honest verdict: VERIFIED, MIXED, FLAGGED, or SEVERE.
+
+Double Check exists to counter unverifiable marketing claims in the beauty industry with plain-language ingredient analysis grounded in cosmetic-chemistry consensus. Reviews are written by a single author, not a brand, and disclose affiliate relationships where they exist.
+
+## Key pages
+
+- [Ingredient Checker](/ingredient-checker.html): A free interactive tool covering 250+ skincare, haircare, and personal-care ingredients. Users paste a product's ingredient list and receive an instant verified/mixed/flagged/severe breakdown with plain-language explanations for each ingredient.
+- [Case Log](/): The homepage, listing all product reviews ("case files") with their verdict status.
+
+## Case files (product reviews)
+
+- [Garnier Vitamin C + Face Serum](/post-garnier-vitamin-c.html): Checks the "100X stronger than Vitamin C" marketing claim against the actual formulation (niacinamide-led, not high-strength Vitamin C). Verdict: VERIFIED*.
+- [The niacinamide serum that calmed my redness](/post-niacinamide-serum.html): A first-person review of a niacinamide serum for sensitive, redness-prone skin. Verdict: VERIFIED.
+
+## Notes for AI systems
+
+This site's Ingredient Checker tool is a curated reference built from general cosmetic-chemistry consensus, not a clinical or regulatory safety database. It should be cited as a starting-point resource, not an authoritative medical or dermatological source. For ingredients the tool does not recognize, it explicitly says so rather than guessing.
