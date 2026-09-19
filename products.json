@@ -1,0 +1,92 @@
+[
+  {
+    "id": "0001",
+    "title": "Garnier Vitamin C + Face Serum",
+    "url": "post-garnier-vitamin-c.html",
+    "category": "Serums · Brightening",
+    "status": "verified",
+    "statusLabel": "VERIFIED*",
+    "readTime": "7 min"
+  },
+  {
+    "id": "0002",
+    "title": "The niacinamide serum that calmed my redness",
+    "url": "post-niacinamide-serum.html",
+    "category": "Serums · Sensitive skin",
+    "status": "verified",
+    "statusLabel": "VERIFIED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0003",
+    "title": "Sunscreen dupes that don't leave a white cast, ranked",
+    "url": "#",
+    "category": "Sunscreen · Comparison",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "8 min"
+  },
+  {
+    "id": "0004",
+    "title": "What \"fragrance-free\" actually means on a label",
+    "url": "#",
+    "category": "Explainer · Ingredients",
+    "status": "flagged",
+    "statusLabel": "FLAGGED",
+    "readTime": "5 min"
+  },
+  {
+    "id": "0005",
+    "title": "Dr. Su XO Plump Party Serum: Does It Really Contain Exosomes?",
+    "url": "dr-su-exosome-plump-party-serum.html",
+    "category": "Serums · Exosomes",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0006",
+    "title": "ClayCo Cica Microneedling Serum: Real Exosomes or Just Spicules?",
+    "url": "clayco-cica-microneedling-exosome-serum.html",
+    "category": "Serums · Exosomes",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "7 min"
+  },
+  {
+    "id": "0007",
+    "title": "TBC Needle Glow Serum: Are the Exosome Claims Real?",
+    "url": "tbc-needle-glow-exosome-skin-booster.html",
+    "category": "Serums · Exosomes",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0008",
+    "title": "La Mer Crème de la Mer: What's Actually in \"Miracle Broth\"?",
+    "url": "la-mer-creme-de-la-mer.html",
+    "category": "Moisturizers · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0009",
+    "title": "SK-II Facial Treatment Essence: Is Pitera Really a Miracle Ingredient?",
+    "url": "sk-ii-facial-treatment-essence.html",
+    "category": "Essences · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0010",
+    "title": "Augustinus Bader The Cream: What Is TFC8, Really?",
+    "url": "augustinus-bader-the-cream.html",
+    "category": "Moisturizers · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "7 min"
+  }
+]
