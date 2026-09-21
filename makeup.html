@@ -33,7 +33,8 @@
   .masthead h1 { font-size:38px; font-weight:700; line-height:1.15; max-width:18ch; letter-spacing:-0.015em; }
   .masthead-sub { font-family:'Newsreader', serif; font-style:italic; font-size:17px; color:var(--ink-soft); max-width:52ch; margin-top:16px; }
   .product-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; margin:40px 0 60px; }
-  .product-card { border:2px solid var(--ink); background:var(--paper-card); padding:22px; }
+  .product-card { border:2px solid var(--ink); background:var(--paper-card); padding:22px; display:block; }
+  .product-card:hover { border-color:var(--red); }
   .product-brand { font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--red); font-weight:600; letter-spacing:0.03em; margin-bottom:6px; }
   .product-name { font-family:'Newsreader', serif; font-size:19px; margin-bottom:8px; }
   .product-price { font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:600; color:var(--ink-soft); margin-bottom:14px; }
@@ -69,36 +70,36 @@
 
   <div class="product-grid" id="makeup-grid">
     <!-- Populated from makeup-products.json; static fallback below if JS fails -->
-    <div class="product-card">
+    <a class="product-card" href="https://www.nykaa.com/search/result/?q=Lakme%20Eyeconic%20Kajal" target="_blank" rel="noopener">
       <div class="product-brand">Lakme</div>
       <div class="product-name">Lakme Eyeconic Kajal</div>
       <div class="product-price">₹200</div>
       <div class="product-why">No common fragrance allergens in the formula. Ophthalmologist-tested claim checks out against standard kajal safety testing protocols used industry-wide.</div>
-    </div>
-    <div class="product-card">
+    </a>
+    <a class="product-card" href="https://www.nykaa.com/search/result/?q=Maybelline%20Fit%20Me%20Matte%20Poreless%20Foundation" target="_blank" rel="noopener">
       <div class="product-brand">Maybelline</div>
       <div class="product-name">Maybelline New York Fit Me Matte + Poreless Foundation</div>
       <div class="product-price">₹449</div>
       <div class="product-why">Non-comedogenic claim is consistent with its oil-free, silica-based matte formula. Widely patch-tested with a long safety track record across skin tones.</div>
-    </div>
-    <div class="product-card">
+    </a>
+    <a class="product-card" href="https://www.nykaa.com/search/result/?q=Sugar%20Matte%20Attack%20Transferproof%20Lipstick" target="_blank" rel="noopener">
       <div class="product-brand">Sugar Cosmetics</div>
       <div class="product-name">Sugar Cosmetics Matte Attack Transferproof Lipstick</div>
       <div class="product-price">₹499</div>
       <div class="product-why">Vitamin E included as a stabilizer, a well-evidenced emollient. No parabens, consistent with the brand's stated formulation standard.</div>
-    </div>
-    <div class="product-card">
+    </a>
+    <a class="product-card" href="https://www.nykaa.com/search/result/?q=Loreal%20Infallible%20More%20Than%20Concealer" target="_blank" rel="noopener">
       <div class="product-brand">L'Oreal Paris</div>
       <div class="product-name">L'Oreal Paris Infallible More Than Concealer</div>
       <div class="product-price">₹649</div>
       <div class="product-why">Formulated for up to 24-hour wear without a fragrance additive flag on the ingredient list — a reasonable pick for concealer-sensitive skin.</div>
-    </div>
-    <div class="product-card">
+    </a>
+    <a class="product-card" href="https://www.nykaa.com/search/result/?q=Minimalist%20Salicylic%20Acid%20LHA%20Serum%20Foundation" target="_blank" rel="noopener">
       <div class="product-brand">Minimalist</div>
       <div class="product-name">Minimalist 2% Salicylic Acid + LHA Serum Foundation</div>
       <div class="product-price">₹599</div>
       <div class="product-why">A rare foundation with an actual active ingredient concentration disclosed on the label, matching the brand's ingredient-transparency approach elsewhere in skincare.</div>
-    </div>
+    </a>
   </div>
 </div>
 
@@ -116,12 +117,12 @@ fetch('makeup-products.json')
     if (!Array.isArray(products) || products.length === 0) return;
     var grid = document.getElementById('makeup-grid');
     grid.innerHTML = products.map(function(p) {
-      return '<div class="product-card">' +
+      return '<a class="product-card" href="' + p.url + '" target="_blank" rel="noopener">' +
         '<div class="product-brand">' + p.brand + '</div>' +
         '<div class="product-name">' + p.name + '</div>' +
         '<div class="product-price">' + p.price + '</div>' +
         '<div class="product-why">' + p.why + '</div>' +
-      '</div>';
+      '</a>';
     }).join('');
   })
   .catch(function(err) {

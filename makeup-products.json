@@ -3,30 +3,35 @@
     "name": "Lakme Eyeconic Kajal",
     "brand": "Lakme",
     "price": "₹200",
-    "why": "No common fragrance allergens in the formula. Ophthalmologist-tested claim checks out against standard kajal safety testing protocols used industry-wide."
+    "why": "No common fragrance allergens in the formula. Ophthalmologist-tested claim checks out against standard kajal safety testing protocols used industry-wide.",
+    "url": "https://www.nykaa.com/search/result/?q=Lakme%20Eyeconic%20Kajal"
   },
   {
     "name": "Maybelline New York Fit Me Matte + Poreless Foundation",
     "brand": "Maybelline",
     "price": "₹449",
-    "why": "Non-comedogenic claim is consistent with its oil-free, silica-based matte formula. Widely patch-tested with a long safety track record across skin tones."
+    "why": "Non-comedogenic claim is consistent with its oil-free, silica-based matte formula. Widely patch-tested with a long safety track record across skin tones.",
+    "url": "https://www.nykaa.com/search/result/?q=Maybelline%20Fit%20Me%20Matte%20Poreless%20Foundation"
   },
   {
     "name": "Sugar Cosmetics Matte Attack Transferproof Lipstick",
     "brand": "Sugar Cosmetics",
     "price": "₹499",
-    "why": "Vitamin E included as a stabilizer, a well-evidenced emollient. No parabens, consistent with the brand's stated formulation standard."
+    "why": "Vitamin E included as a stabilizer, a well-evidenced emollient. No parabens, consistent with the brand's stated formulation standard.",
+    "url": "https://www.nykaa.com/search/result/?q=Sugar%20Matte%20Attack%20Transferproof%20Lipstick"
   },
   {
     "name": "L'Oreal Paris Infallible More Than Concealer",
     "brand": "L'Oreal Paris",
     "price": "₹649",
-    "why": "Formulated for up to 24-hour wear without a fragrance additive flag on the ingredient list — a reasonable pick for concealer-sensitive skin."
+    "why": "Formulated for up to 24-hour wear without a fragrance additive flag on the ingredient list — a reasonable pick for concealer-sensitive skin.",
+    "url": "https://www.nykaa.com/search/result/?q=Loreal%20Infallible%20More%20Than%20Concealer"
   },
   {
     "name": "Minimalist 2% Salicylic Acid + LHA Serum Foundation",
     "brand": "Minimalist",
     "price": "₹599",
-    "why": "A rare foundation with an actual active ingredient concentration disclosed on the label, matching the brand's ingredient-transparency approach elsewhere in skincare."
+    "why": "A rare foundation with an actual active ingredient concentration disclosed on the label, matching the brand's ingredient-transparency approach elsewhere in skincare.",
+    "url": "https://www.nykaa.com/search/result/?q=Minimalist%20Salicylic%20Acid%20LHA%20Serum%20Foundation"
   }
 ]
