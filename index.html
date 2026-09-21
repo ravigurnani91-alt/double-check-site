@@ -109,7 +109,7 @@
   .log-time { font-family: 'Space Grotesk', sans-serif; font-size: 12.5px; color: var(--ink-soft); text-align: right; white-space: nowrap; }
 
   .cat-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 52px 0; }
-  .cat-card { border: 1.5px solid var(--ink); padding: 20px; }
+  .cat-card { border: 1.5px solid var(--ink); padding: 20px; display: block; }
   .cat-card:hover { border-color: var(--red); }
   .cat-card .cat-num { font-family: 'Space Grotesk', sans-serif; font-size: 12px; color: var(--red); margin-bottom: 8px; }
   .cat-card h4 { font-size: 18px; font-family: 'Newsreader', serif; margin-bottom: 6px; }
@@ -248,21 +248,21 @@
   </div>
 
   <div class="cat-strip">
-    <div class="cat-card">
+    <a href="index.html#skincare" class="cat-card">
       <div class="cat-num">FILE A</div>
       <h4>Budget starter routine</h4>
       <p>Four products, no guesswork, under ₹500 total.</p>
-    </div>
-    <div class="cat-card">
+    </a>
+    <a href="fragrance-free-label-explainer.html" class="cat-card">
       <div class="cat-num">FILE B</div>
       <h4>Nothing here will make you react</h4>
       <p>Fragrance-free picks for skin that punishes everything.</p>
-    </div>
-    <div class="cat-card">
+    </a>
+    <a href="index.html#skincare" class="cat-card">
       <div class="cat-num">FILE C</div>
       <h4>Marketing claims we're still checking</h4>
       <p>Products with open, unresolved claims — check back.</p>
-    </div>
+    </a>
   </div>
 
   <div class="about-block" id="about">
