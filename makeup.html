@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/tracking.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makeup — Safe Picks, Checked Against the Label | Double Check</title>
+<meta name="description" content="Curated makeup picks checked for common allergens, comedogenic claims, and formulation transparency. Lighter than a full case file, still checked.">
+<link rel="canonical" href="https://www.doublecheck.blog/makeup.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Makeup — Safe Picks, Checked Against the Label">
+<meta property="og:description" content="Curated makeup picks checked for common allergens and formulation transparency.">
+<meta property="og:url" content="https://www.doublecheck.blog/makeup.html">
+<meta property="og:site_name" content="Double Check">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#EFEBE2; --paper-card:#F7F4EC; --ink:#1E1C18; --ink-soft:#6E6A5F; --red:#B23A2E; --green:#3D6B52; --amber:#9A7B2E; --line:#d9d3c3; --max-w:960px; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Newsreader', serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3 { font-family:'Space Grotesk', sans-serif; margin:0; color:var(--ink); }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:var(--max-w); margin:0 auto; padding:0 24px; }
+  header { padding:22px 0; border-bottom:2px solid var(--ink); }
+  .header-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .logo { font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:21px; }
+  .logo .sq { display:inline-block; width:9px; height:9px; background:var(--red); margin-right:8px; vertical-align:middle; }
+  nav { display:flex; gap:26px; font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:500; }
+  nav a { padding-bottom:3px; border-bottom:2px solid transparent; }
+  nav a:hover, nav a.nav-active { border-bottom-color:var(--red); }
+  .masthead { padding:52px 0 36px; border-bottom:2px solid var(--ink); }
+  .masthead-tag { font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:600; color:var(--red); margin-bottom:14px; }
+  .masthead h1 { font-size:38px; font-weight:700; line-height:1.15; max-width:18ch; letter-spacing:-0.015em; }
+  .masthead-sub { font-family:'Newsreader', serif; font-style:italic; font-size:17px; color:var(--ink-soft); max-width:52ch; margin-top:16px; }
+  .product-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; margin:40px 0 60px; }
+  .product-card { border:2px solid var(--ink); background:var(--paper-card); padding:22px; }
+  .product-brand { font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--red); font-weight:600; letter-spacing:0.03em; margin-bottom:6px; }
+  .product-name { font-family:'Newsreader', serif; font-size:19px; margin-bottom:8px; }
+  .product-price { font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:600; color:var(--ink-soft); margin-bottom:14px; }
+  .product-why { font-size:14.5px; color:var(--ink-soft); border-left:3px solid var(--green); padding-left:12px; }
+  .note-block { background:var(--paper-card); border:1.5px solid var(--ink); padding:20px 24px; margin:20px 0 40px; font-size:14.5px; color:var(--ink-soft); }
+  footer { border-top:2px solid var(--ink); padding:20px 0 36px; font-family:'Space Grotesk', sans-serif; font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  @media (max-width:760px) { .product-grid { grid-template-columns:1fr; } .masthead h1 { font-size:28px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap header-row">
+    <div class="logo"><span class="sq"></span>Double Check</div>
+    <nav>
+      <a href="index.html">Skincare</a>
+      <a href="ingredient-checker.html">Ingredient Checker</a>
+      <a href="makeup.html" class="nav-active">Makeup</a>
+      <a href="index.html#about">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="masthead">
+    <div class="masthead-tag">MAKEUP — SAFE PICKS</div>
+    <h1>Makeup we'd actually let near your face.</h1>
+    <p class="masthead-sub">A lighter check than our full case files — no deep ingredient breakdown, but every pick here is screened for common allergens, comedogenic red flags, and formulation transparency before it makes the list.</p>
+  </section>
+
+  <div class="note-block">
+    This section works differently from our skincare case files. Skincare gets a full ingredient-by-ingredient verdict; makeup picks here get a quicker safety and transparency screen — good for browsing, not a substitute for checking your own sensitivities. Some links may be affiliate links.
+  </div>
+
+  <div class="product-grid" id="makeup-grid">
+    <!-- Populated from makeup-products.json; static fallback below if JS fails -->
+    <div class="product-card">
+      <div class="product-brand">Lakme</div>
+      <div class="product-name">Lakme Eyeconic Kajal</div>
+      <div class="product-price">₹200</div>
+      <div class="product-why">No common fragrance allergens in the formula. Ophthalmologist-tested claim checks out against standard kajal safety testing protocols used industry-wide.</div>
+    </div>
+    <div class="product-card">
+      <div class="product-brand">Maybelline</div>
+      <div class="product-name">Maybelline New York Fit Me Matte + Poreless Foundation</div>
+      <div class="product-price">₹449</div>
+      <div class="product-why">Non-comedogenic claim is consistent with its oil-free, silica-based matte formula. Widely patch-tested with a long safety track record across skin tones.</div>
+    </div>
+    <div class="product-card">
+      <div class="product-brand">Sugar Cosmetics</div>
+      <div class="product-name">Sugar Cosmetics Matte Attack Transferproof Lipstick</div>
+      <div class="product-price">₹499</div>
+      <div class="product-why">Vitamin E included as a stabilizer, a well-evidenced emollient. No parabens, consistent with the brand's stated formulation standard.</div>
+    </div>
+    <div class="product-card">
+      <div class="product-brand">L'Oreal Paris</div>
+      <div class="product-name">L'Oreal Paris Infallible More Than Concealer</div>
+      <div class="product-price">₹649</div>
+      <div class="product-why">Formulated for up to 24-hour wear without a fragrance additive flag on the ingredient list — a reasonable pick for concealer-sensitive skin.</div>
+    </div>
+    <div class="product-card">
+      <div class="product-brand">Minimalist</div>
+      <div class="product-name">Minimalist 2% Salicylic Acid + LHA Serum Foundation</div>
+      <div class="product-price">₹599</div>
+      <div class="product-why">A rare foundation with an actual active ingredient concentration disclosed on the label, matching the brand's ingredient-transparency approach elsewhere in skincare.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Double Check — ingredient verification log</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script>
+fetch('makeup-products.json')
+  .then(function(res) { return res.json(); })
+  .then(function(products) {
+    if (!Array.isArray(products) || products.length === 0) return;
+    var grid = document.getElementById('makeup-grid');
+    grid.innerHTML = products.map(function(p) {
+      return '<div class="product-card">' +
+        '<div class="product-brand">' + p.brand + '</div>' +
+        '<div class="product-name">' + p.name + '</div>' +
+        '<div class="product-price">' + p.price + '</div>' +
+        '<div class="product-why">' + p.why + '</div>' +
+      '</div>';
+    }).join('');
+  })
+  .catch(function(err) {
+    console.warn('Could not load makeup-products.json, showing static fallback.', err);
+  });
+</script>
+
+</body>
+</html>
