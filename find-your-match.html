@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/tracking.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Your Match — Personalized Skincare Picks | Double Check</title>
+<meta name="description" content="Tell us your skin type, main concern, and budget — get matched to verified case files from our skincare log, not a generic quiz upsell.">
+<link rel="canonical" href="https://www.doublecheck.blog/find-your-match.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find Your Match — Personalized Skincare Picks">
+<meta property="og:description" content="Get matched to verified skincare picks based on your skin type, concern, and budget.">
+<meta property="og:url" content="https://www.doublecheck.blog/find-your-match.html">
+<meta property="og:site_name" content="Double Check">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#EFEBE2; --paper-card:#F7F4EC; --ink:#1E1C18; --ink-soft:#6E6A5F; --red:#B23A2E; --green:#3D6B52; --amber:#9A7B2E; --line:#d9d3c3; --max-w:780px; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Newsreader', serif; font-size:17px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3 { font-family:'Space Grotesk', sans-serif; margin:0; color:var(--ink); }
+  a { color:inherit; }
+  .wrap { max-width:var(--max-w); margin:0 auto; padding:0 24px; }
+  header { padding:22px 0; border-bottom:2px solid var(--ink); }
+  .header-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .logo { font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:21px; }
+  .logo .sq { display:inline-block; width:9px; height:9px; background:var(--red); margin-right:8px; vertical-align:middle; }
+  nav { display:flex; gap:26px; font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:500; }
+  nav a { text-decoration:none; padding-bottom:3px; border-bottom:2px solid transparent; }
+  nav a:hover, nav a.nav-active { border-bottom-color:var(--red); }
+  .masthead { padding:52px 0 36px; border-bottom:2px solid var(--ink); }
+  .masthead-tag { font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:600; color:var(--red); margin-bottom:14px; }
+  .masthead h1 { font-size:36px; font-weight:700; line-height:1.15; max-width:18ch; letter-spacing:-0.015em; }
+  .masthead-sub { font-family:'Newsreader', serif; font-style:italic; font-size:17px; color:var(--ink-soft); max-width:52ch; margin-top:16px; }
+
+  .quiz-card { border:2px solid var(--ink); background:var(--paper-card); padding:32px; margin:40px 0; }
+  .quiz-step { display:none; }
+  .quiz-step.active { display:block; }
+  .quiz-progress { font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--ink-soft); margin-bottom:16px; letter-spacing:0.03em; }
+  .quiz-question { font-size:20px; margin-bottom:20px; }
+  .option-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:24px; }
+  .option-btn { border:1.5px solid var(--ink); background:var(--paper); padding:16px; font-family:'Space Grotesk', sans-serif; font-size:14.5px; font-weight:500; cursor:pointer; text-align:left; }
+  .option-btn:hover { border-color:var(--red); }
+  .option-btn.selected { border-color:var(--red); background:var(--red); color:var(--paper); }
+  .quiz-nav { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+  .quiz-btn { font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:14px; border:2px solid var(--ink); padding:10px 20px; background:none; cursor:pointer; }
+  .quiz-btn:hover { border-color:var(--red); color:var(--red); }
+  .quiz-btn:disabled { opacity:0.3; cursor:not-allowed; }
+  .quiz-btn:disabled:hover { border-color:var(--ink); color:var(--ink); }
+
+  .results-head { font-size:22px; margin-bottom:8px; }
+  .results-sub { font-family:'Space Grotesk', sans-serif; font-size:13px; color:var(--ink-soft); margin-bottom:24px; }
+  .result-card { border:1.5px solid var(--ink); padding:20px; margin-bottom:14px; display:block; text-decoration:none; }
+  .result-card:hover { border-color:var(--red); }
+  .result-title { font-size:18px; margin-bottom:6px; }
+  .result-meta { font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--ink-soft); }
+  .status-tag { font-family:'Space Grotesk', sans-serif; font-size:11px; font-weight:600; padding:3px 8px; border:1.5px solid currentColor; white-space:nowrap; display:inline-block; margin-left:8px; }
+  .status-tag.verified { color:var(--green); }
+  .status-tag.mixed { color:var(--amber); }
+  .status-tag.flagged { color:var(--red); }
+  .retry-link { display:inline-block; margin-top:20px; font-family:'Space Grotesk', sans-serif; font-size:13px; border-bottom:2px solid var(--ink); padding-bottom:2px; cursor:pointer; }
+  .no-results { color:var(--ink-soft); font-style:italic; }
+
+  footer { border-top:2px solid var(--ink); padding:20px 0 36px; font-family:'Space Grotesk', sans-serif; font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  @media (max-width:760px) { .masthead h1 { font-size:26px; } .option-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap header-row">
+    <div class="logo"><span class="sq"></span>Double Check</div>
+    <nav>
+      <a href="index.html">Skincare</a>
+      <a href="ingredient-checker.html">Ingredient Checker</a>
+      <a href="makeup.html">Makeup</a>
+      <a href="find-your-match.html" class="nav-active">Find Your Match</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="masthead">
+    <div class="masthead-tag">FIND YOUR MATCH</div>
+    <h1>What actually suits your skin?</h1>
+    <p class="masthead-sub">Three quick questions, matched against our own verified case log — not a generic quiz built to upsell whatever's in stock.</p>
+  </section>
+
+  <div class="quiz-card">
+    <div class="quiz-step active" id="step-1">
+      <div class="quiz-progress">QUESTION 1 OF 3</div>
+      <div class="quiz-question">What's your skin type?</div>
+      <div class="option-grid" data-field="skinType">
+        <button class="option-btn" data-value="oily">Oily</button>
+        <button class="option-btn" data-value="dry">Dry</button>
+        <button class="option-btn" data-value="combination">Combination</button>
+        <button class="option-btn" data-value="sensitive">Sensitive</button>
+        <button class="option-btn" data-value="normal">Normal</button>
+      </div>
+      <div class="quiz-nav">
+        <span></span>
+        <button class="quiz-btn" id="next-1" disabled>Next →</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="step-2">
+      <div class="quiz-progress">QUESTION 2 OF 3</div>
+      <div class="quiz-question">What's your main concern?</div>
+      <div class="option-grid" data-field="concern">
+        <button class="option-btn" data-value="aging">Aging / fine lines</button>
+        <button class="option-btn" data-value="hydration">Dryness / hydration</button>
+        <button class="option-btn" data-value="brightening">Dullness / brightening</button>
+        <button class="option-btn" data-value="redness">Redness / sensitivity</button>
+        <button class="option-btn" data-value="pores">Pores / texture</button>
+        <button class="option-btn" data-value="sun-protection">Sun protection</button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn" id="back-2">← Back</button>
+        <button class="quiz-btn" id="next-2" disabled>Next →</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="step-3">
+      <div class="quiz-progress">QUESTION 3 OF 3</div>
+      <div class="quiz-question">What's your budget?</div>
+      <div class="option-grid" data-field="budget">
+        <button class="option-btn" data-value="budget">Budget (under ₹1,000)</button>
+        <button class="option-btn" data-value="mid">Mid-range (₹1,000-2,000)</button>
+        <button class="option-btn" data-value="luxury">Luxury (no ceiling)</button>
+        <button class="option-btn" data-value="any">Show me everything</button>
+      </div>
+      <div class="quiz-nav">
+        <button class="quiz-btn" id="back-3">← Back</button>
+        <button class="quiz-btn" id="see-results">See My Matches →</button>
+      </div>
+    </div>
+
+    <div class="quiz-step" id="step-results">
+      <div class="results-head" id="results-heading">Your matches</div>
+      <div class="results-sub" id="results-sub"></div>
+      <div id="results-list"></div>
+      <span class="retry-link" id="retry-quiz">↺ Start over</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Double Check — ingredient verification log</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script>
+var answers = { skinType: null, concern: null, budget: null };
+var allProducts = [];
+
+document.querySelectorAll('.option-grid').forEach(function(grid) {
+  var field = grid.getAttribute('data-field');
+  grid.querySelectorAll('.option-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      grid.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      answers[field] = btn.getAttribute('data-value');
+      if (field === 'skinType') document.getElementById('next-1').disabled = false;
+      if (field === 'concern') document.getElementById('next-2').disabled = false;
+    });
+  });
+});
+
+function showStep(id) {
+  document.querySelectorAll('.quiz-step').forEach(function(s) { s.classList.remove('active'); });
+  document.getElementById(id).classList.add('active');
+}
+
+document.getElementById('next-1').addEventListener('click', function() { showStep('step-2'); });
+document.getElementById('back-2').addEventListener('click', function() { showStep('step-1'); });
+document.getElementById('next-2').addEventListener('click', function() { showStep('step-3'); });
+document.getElementById('back-3').addEventListener('click', function() { showStep('step-2'); });
+document.getElementById('retry-quiz').addEventListener('click', function() {
+  answers = { skinType: null, concern: null, budget: null };
+  document.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+  document.getElementById('next-1').disabled = true;
+  document.getElementById('next-2').disabled = true;
+  showStep('step-1');
+});
+
+document.getElementById('see-results').addEventListener('click', function() {
+  if (!answers.budget) answers.budget = 'any';
+  renderResults();
+  showStep('step-results');
+});
+
+function renderResults() {
+  var matches = allProducts.filter(function(p) {
+    if (!p.skinType) return false;
+    var skinMatch = p.skinType.indexOf(answers.skinType) !== -1;
+    var concernMatch = p.concern && p.concern.indexOf(answers.concern) !== -1;
+    var budgetMatch = answers.budget === 'any' || p.budget === answers.budget;
+    return skinMatch && concernMatch && budgetMatch;
+  });
+
+  // Fallback: relax budget filter if nothing matches
+  if (matches.length === 0) {
+    matches = allProducts.filter(function(p) {
+      if (!p.skinType) return false;
+      var skinMatch = p.skinType.indexOf(answers.skinType) !== -1;
+      var concernMatch = p.concern && p.concern.indexOf(answers.concern) !== -1;
+      return skinMatch && concernMatch;
+    });
+  }
+
+  var heading = document.getElementById('results-heading');
+  var sub = document.getElementById('results-sub');
+  var list = document.getElementById('results-list');
+
+  if (matches.length === 0) {
+    heading.textContent = "No exact match yet";
+    sub.textContent = "We haven't covered a case file for this exact combination yet — check the full case log for now.";
+    list.innerHTML = '<p class="no-results">Browse the <a href="index.html" style="text-decoration:underline;">full case log</a> instead.</p>';
+    return;
+  }
+
+  heading.textContent = matches.length + " match" + (matches.length > 1 ? "es" : "") + " found";
+  sub.textContent = "Based on " + answers.skinType + " skin, " + answers.concern.replace('-', ' ') + " concerns" + (answers.budget !== 'any' ? ', ' + answers.budget + ' budget' : '');
+
+  list.innerHTML = matches.map(function(p) {
+    return '<a class="result-card" href="' + p.url + '">' +
+      '<div class="result-title">' + p.title + '<span class="status-tag ' + p.status + '">' + p.statusLabel + '</span></div>' +
+      '<div class="result-meta">' + p.category + '</div>' +
+    '</a>';
+  }).join('');
+}
+
+fetch('products.json')
+  .then(function(res) { return res.json(); })
+  .then(function(products) { allProducts = products; })
+  .catch(function(err) { console.warn('Could not load products.json for matching.', err); });
+</script>
+
+</body>
+</html>

@@ -6,7 +6,16 @@
     "category": "Serums · Brightening",
     "status": "verified",
     "statusLabel": "VERIFIED*",
-    "readTime": "7 min"
+    "readTime": "7 min",
+    "skinType": [
+      "normal",
+      "combination"
+    ],
+    "concern": [
+      "dullness",
+      "brightening"
+    ],
+    "budget": "budget"
   },
   {
     "id": "0002",
@@ -15,7 +24,16 @@
     "category": "Serums · Sensitive skin",
     "status": "verified",
     "statusLabel": "VERIFIED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "sensitive",
+      "dry"
+    ],
+    "concern": [
+      "sensitivity",
+      "redness"
+    ],
+    "budget": "budget"
   },
   {
     "id": "0003",
@@ -24,7 +42,15 @@
     "category": "Sunscreen · Comparison",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "8 min"
+    "readTime": "8 min",
+    "skinType": [
+      "oily",
+      "combination"
+    ],
+    "concern": [
+      "sun-protection"
+    ],
+    "budget": "budget"
   },
   {
     "id": "0004",
@@ -33,7 +59,14 @@
     "category": "Explainer · Ingredients",
     "status": "flagged",
     "statusLabel": "FLAGGED",
-    "readTime": "5 min"
+    "readTime": "5 min",
+    "skinType": [
+      "sensitive"
+    ],
+    "concern": [
+      "sensitivity"
+    ],
+    "budget": "budget"
   },
   {
     "id": "0005",
@@ -42,7 +75,16 @@
     "category": "Serums · Exosomes",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "normal",
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "hydration"
+    ],
+    "budget": "mid"
   },
   {
     "id": "0006",
@@ -51,7 +93,16 @@
     "category": "Serums · Exosomes",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "7 min"
+    "readTime": "7 min",
+    "skinType": [
+      "sensitive",
+      "dry"
+    ],
+    "concern": [
+      "redness",
+      "barrier-repair"
+    ],
+    "budget": "mid"
   },
   {
     "id": "0007",
@@ -60,7 +111,16 @@
     "category": "Serums · Exosomes",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "oily",
+      "combination"
+    ],
+    "concern": [
+      "brightening",
+      "pores"
+    ],
+    "budget": "mid"
   },
   {
     "id": "0008",
@@ -69,7 +129,15 @@
     "category": "Moisturizers · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "hydration"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0009",
@@ -78,7 +146,16 @@
     "category": "Essences · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "normal",
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "brightening"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0010",
@@ -87,7 +164,15 @@
     "category": "Moisturizers · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "7 min"
+    "readTime": "7 min",
+    "skinType": [
+      "dry",
+      "normal"
+    ],
+    "concern": [
+      "aging"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0011",
@@ -96,7 +181,15 @@
     "category": "Serums · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "sensitive"
+    ],
+    "concern": [
+      "aging",
+      "sensitivity"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0012",
@@ -105,7 +198,15 @@
     "category": "Moisturizers · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "hydration"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0013",
@@ -114,7 +215,15 @@
     "category": "Moisturizers · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "dry",
+      "normal"
+    ],
+    "concern": [
+      "aging"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0014",
@@ -123,7 +232,15 @@
     "category": "Moisturizers · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "hydration"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0015",
@@ -132,7 +249,16 @@
     "category": "Serums · Luxury",
     "status": "verified",
     "statusLabel": "VERIFIED*",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concern": [
+      "aging"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0016",
@@ -141,7 +267,14 @@
     "category": "Serums · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "normal"
+    ],
+    "concern": [
+      "aging"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0017",
@@ -150,7 +283,16 @@
     "category": "Moisturizers · Luxury",
     "status": "verified",
     "statusLabel": "VERIFIED*",
-    "readTime": "5 min"
+    "readTime": "5 min",
+    "skinType": [
+      "dry",
+      "normal"
+    ],
+    "concern": [
+      "hydration",
+      "dullness"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0018",
@@ -159,7 +301,16 @@
     "category": "Serums · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "normal",
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "texture"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0019",
@@ -168,7 +319,15 @@
     "category": "Moisturizers · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "6 min"
+    "readTime": "6 min",
+    "skinType": [
+      "dry"
+    ],
+    "concern": [
+      "aging",
+      "firming"
+    ],
+    "budget": "luxury"
   },
   {
     "id": "0020",
@@ -177,6 +336,16 @@
     "category": "Masks · Luxury",
     "status": "mixed",
     "statusLabel": "MIXED",
-    "readTime": "5 min"
+    "readTime": "5 min",
+    "skinType": [
+      "normal",
+      "dry",
+      "combination"
+    ],
+    "concern": [
+      "hydration",
+      "dullness"
+    ],
+    "budget": "luxury"
   }
 ]
