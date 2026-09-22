@@ -88,5 +88,95 @@
     "status": "mixed",
     "statusLabel": "MIXED",
     "readTime": "7 min"
+  },
+  {
+    "id": "0011",
+    "title": "Dr. Barbara Sturm Super Anti-Aging Serum: Does the Peptide Justify the Price?",
+    "url": "dr-barbara-sturm-super-anti-aging-serum.html",
+    "category": "Serums · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0012",
+    "title": "Sisley Paris Black Rose Skin Infusion Cream: What's Behind the Rose Complex?",
+    "url": "sisley-paris-black-rose-cream.html",
+    "category": "Moisturizers · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0013",
+    "title": "Guerlain Orchidée Impériale: Is the Orchid Extract Doing Anything?",
+    "url": "guerlain-orchidee-imperiale-cream.html",
+    "category": "Moisturizers · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0014",
+    "title": "Chanel Sublimage La Crème: What's the Vanilla Extract Actually For?",
+    "url": "chanel-sublimage-la-creme.html",
+    "category": "Moisturizers · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0015",
+    "title": "Estée Lauder Advanced Night Repair: The Most-Studied Luxury Serum, Verified",
+    "url": "estee-lauder-advanced-night-repair.html",
+    "category": "Serums · Luxury",
+    "status": "verified",
+    "statusLabel": "VERIFIED*",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0016",
+    "title": "Shiseido Ultimune Power Infusing Concentrate: What Is the Ultimune Complex?",
+    "url": "shiseido-ultimune-power-infusing-concentrate.html",
+    "category": "Serums · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0017",
+    "title": "Tatcha The Dewy Skin Cream: Does Japanese Purple Rice Actually Hydrate?",
+    "url": "tatcha-the-dewy-skin-cream.html",
+    "category": "Moisturizers · Luxury",
+    "status": "verified",
+    "statusLabel": "VERIFIED*",
+    "readTime": "5 min"
+  },
+  {
+    "id": "0018",
+    "title": "111Skin Celestial Black Diamond Retinol Oil: Does the Diamond Powder Do Anything?",
+    "url": "111skin-celestial-black-diamond-retinol-oil.html",
+    "category": "Serums · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0019",
+    "title": "La Prairie Skin Caviar Luxe Cream: Is Caviar Extract Backed by Evidence?",
+    "url": "la-prairie-skin-caviar-luxe-cream.html",
+    "category": "Moisturizers · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "6 min"
+  },
+  {
+    "id": "0020",
+    "title": "Valmont Prime Renewing Pack: What's Actually in the \"Cellular\" Mask?",
+    "url": "valmont-prime-renewing-pack.html",
+    "category": "Masks · Luxury",
+    "status": "mixed",
+    "statusLabel": "MIXED",
+    "readTime": "5 min"
   }
 ]

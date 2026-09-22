@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/tracking.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Double Check — Why We Verify Every Ingredient Claim</title>
+<meta name="description" content="Double Check reads the ingredient list on every product we cover and checks it against the marketing claim. Here's how we verify, why it matters, and how we're funded.">
+<link rel="canonical" href="https://www.doublecheck.blog/about.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About Double Check — Why We Verify Every Ingredient Claim">
+<meta property="og:description" content="How Double Check verifies skincare and makeup marketing claims against actual ingredient lists.">
+<meta property="og:url" content="https://www.doublecheck.blog/about.html">
+<meta property="og:site_name" content="Double Check">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#EFEBE2; --paper-card:#F7F4EC; --ink:#1E1C18; --ink-soft:#6E6A5F; --red:#B23A2E; --green:#3D6B52; --amber:#9A7B2E; --line:#d9d3c3; --max-w:780px; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:'Newsreader', serif; font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3 { font-family:'Space Grotesk', sans-serif; margin:0; color:var(--ink); }
+  a { color:inherit; }
+  .wrap { max-width:var(--max-w); margin:0 auto; padding:0 24px; }
+  header { padding:22px 0; border-bottom:2px solid var(--ink); }
+  .header-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .logo { font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:21px; }
+  .logo .sq { display:inline-block; width:9px; height:9px; background:var(--red); margin-right:8px; vertical-align:middle; }
+  nav { display:flex; gap:26px; font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:500; }
+  nav a { text-decoration:none; padding-bottom:3px; border-bottom:2px solid transparent; }
+  nav a:hover, nav a.nav-active { border-bottom-color:var(--red); }
+  .masthead { padding:52px 0 36px; border-bottom:2px solid var(--ink); }
+  .masthead-tag { font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:600; color:var(--red); margin-bottom:14px; }
+  .masthead h1 { font-size:38px; font-weight:700; line-height:1.15; max-width:20ch; letter-spacing:-0.015em; }
+  .masthead-sub { font-family:'Newsreader', serif; font-style:italic; font-size:18px; color:var(--ink-soft); max-width:52ch; margin-top:16px; }
+  section.block { margin:44px 0; }
+  section.block h2 { font-size:22px; margin-bottom:16px; }
+  section.block p { margin:0 0 16px; }
+  .step-list { counter-reset:step; margin:24px 0; padding:0; list-style:none; }
+  .step-list li { counter-increment:step; padding:18px 0 18px 44px; position:relative; border-bottom:1px solid var(--line); }
+  .step-list li:last-child { border-bottom:none; }
+  .step-list li::before { content:counter(step); position:absolute; left:0; top:18px; width:28px; height:28px; border:2px solid var(--ink); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:'Space Grotesk', sans-serif; font-size:13px; font-weight:700; }
+  .step-list h3 { font-size:16.5px; margin-bottom:6px; }
+  .step-list p { color:var(--ink-soft); font-size:15px; margin:0; }
+  .verdict-key { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin:24px 0; }
+  .verdict-item { border:1.5px solid var(--ink); padding:16px; text-align:center; }
+  .verdict-tag { font-family:'Space Grotesk', sans-serif; font-size:12px; font-weight:700; padding:4px 9px; border:1.5px solid currentColor; display:inline-block; margin-bottom:8px; }
+  .verdict-tag.verified { color:var(--green); }
+  .verdict-tag.mixed { color:var(--amber); }
+  .verdict-tag.flagged { color:var(--red); }
+  .verdict-item p { font-size:13.5px; color:var(--ink-soft); margin:0; }
+  .note-block { background:var(--paper-card); border:2px solid var(--ink); padding:24px 26px; font-size:15px; }
+  footer { border-top:2px solid var(--ink); padding:20px 0 36px; font-family:'Space Grotesk', sans-serif; font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  @media (max-width:760px) { .masthead h1 { font-size:28px; } .verdict-key { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap header-row">
+    <div class="logo"><span class="sq"></span>Double Check</div>
+    <nav>
+      <a href="index.html">Skincare</a>
+      <a href="ingredient-checker.html">Ingredient Checker</a>
+      <a href="makeup.html">Makeup</a>
+      <a href="about.html" class="nav-active">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="masthead">
+    <div class="masthead-tag">ABOUT DOUBLE CHECK</div>
+    <h1>We read the label so you don't have to.</h1>
+    <p class="masthead-sub">Double Check exists because most beauty marketing claims sound scientific without being checked. We check them.</p>
+  </section>
+
+  <section class="block">
+    <h2>Why This Exists</h2>
+    <p>Skincare and makeup packaging is full of confident language — "clinically proven," "10x stronger," "cellular regeneration" — that most shoppers have no easy way to verify. The gap between what a label implies and what the actual ingredient list supports is often wide, and it's rarely in the brand's interest to close that gap for you.</p>
+    <p>Double Check reads the full ingredient list on every product we cover, checks each headline claim against what's actually formulated and what independent evidence exists, and publishes a plain verdict. Not a takedown, not an endorsement — just what holds up and what doesn't.</p>
+  </section>
+
+  <section class="block">
+    <h2>How We Verify Each Case</h2>
+    <ol class="step-list">
+      <li>
+        <h3>Read the full ingredient list</h3>
+        <p>We pull the complete INCI ingredient list for the product, not just the two or three actives the brand highlights on the front of the bottle.</p>
+      </li>
+      <li>
+        <h3>Identify the headline claim</h3>
+        <p>We note the specific marketing claim being made — a percentage, a named "complex," a comparative statement like "10x stronger."</p>
+      </li>
+      <li>
+        <h3>Check each ingredient against available evidence</h3>
+        <p>Every notable ingredient gets checked against what's independently published about it — not just what the brand or its own commissioned studies say.</p>
+      </li>
+      <li>
+        <h3>Stamp a verdict</h3>
+        <p>Each case closes with one of three verdicts, explained below, plus the specific reasoning behind it.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="block">
+    <h2>What Our Verdicts Mean</h2>
+    <div class="verdict-key">
+      <div class="verdict-item">
+        <div class="verdict-tag verified">VERIFIED</div>
+        <p>The core claim holds up reasonably well against the ingredient list and available evidence.</p>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-tag mixed">MIXED</div>
+        <p>Some claims check out, others are plausible but not independently proven at the scale marketed.</p>
+      </div>
+      <div class="verdict-item">
+        <div class="verdict-tag flagged">FLAGGED</div>
+        <p>The claim runs meaningfully ahead of what the ingredient list or evidence actually supports.</p>
+      </div>
+    </div>
+    <p style="font-size:14.5px; color:var(--ink-soft);">A "verified" stamp means the core claim holds up — not that every word on the label is literally true down to the last adjective. Each case file explains the specific reasoning.</p>
+  </section>
+
+  <section class="block">
+    <h2>Makeup Works Differently</h2>
+    <p>Our Makeup section uses a lighter screen than our full skincare case files — checking for common allergens, comedogenic red flags, and formulation transparency rather than a full ingredient-by-ingredient breakdown. It's built for browsing safe picks quickly, not as a substitute for checking your own sensitivities.</p>
+  </section>
+
+  <section class="block">
+    <h2>How We're Funded</h2>
+    <div class="note-block">
+      Double Check is reader-supported. Some links on this site are affiliate or product links, and purchases made through them may help fund the site. Funding never changes a verdict — a product doesn't get a better stamp because we link to it. Full disclosure is in our <a href="privacy-policy.html" style="text-decoration:underline;">Terms & Privacy page</a>.
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Questions or Corrections</h2>
+    <p>Spot something inaccurate in a case file, or think we got a verdict wrong? We want to know. Ingredient science and product formulations change, and we'd rather correct a case file than leave it wrong.</p>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <span>Double Check — ingredient verification log</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+</body>
+</html>

@@ -33,5 +33,40 @@
     "price": "₹599",
     "why": "A rare foundation with an actual active ingredient concentration disclosed on the label, matching the brand's ingredient-transparency approach elsewhere in skincare.",
     "url": "https://www.nykaa.com/search/result/?q=Minimalist%20Salicylic%20Acid%20LHA%20Serum%20Foundation"
+  },
+  {
+    "name": "NYX Professional Makeup Bare With Me Concealer Serum",
+    "brand": "NYX Professional Makeup",
+    "price": "₹899",
+    "why": "Formulated with hyaluronic acid and vitamin E as stated skincare-hybrid actives — a reasonable choice for concealer-sensitive under-eye skin, with no major flagged allergens.",
+    "url": "https://www.nykaa.com/search/result/?q=NYX%20Bare%20With%20Me%20Concealer%20Serum"
+  },
+  {
+    "name": "Bobbi Brown Skin Long-Wear Weightless Foundation",
+    "brand": "Bobbi Brown",
+    "price": "₹3,700",
+    "why": "Oil-free, non-comedogenic formulation consistent with its stated claims. Long safety track record and dermatologist-tested across a wide shade range.",
+    "url": "https://www.nykaa.com/search/result/?q=Bobbi%20Brown%20Skin%20Long-Wear%20Weightless%20Foundation"
+  },
+  {
+    "name": "Colorbar Kiss Proof Kajal",
+    "brand": "Colorbar",
+    "price": "₹450",
+    "why": "Waterproof, smudge-proof claim consistent with its wax-based formula. No common fragrance allergens flagged in the ingredient list.",
+    "url": "https://www.nykaa.com/search/result/?q=Colorbar%20Kiss%20Proof%20Kajal"
+  },
+  {
+    "name": "Huda Beauty Easy Bake Loose Baking & Setting Powder",
+    "brand": "Huda Beauty",
+    "price": "₹2,900",
+    "why": "Talc-free formula claim checks out against its silica-based ingredient list — a reasonable pick for those avoiding talc specifically, with no major irritant flags.",
+    "url": "https://www.nykaa.com/search/result/?q=Huda%20Beauty%20Easy%20Bake%20Loose%20Powder"
+  },
+  {
+    "name": "Charlotte Tilbury Pillow Talk Lipstick",
+    "brand": "Charlotte Tilbury",
+    "price": "₹2,800",
+    "why": "Contains hyaluronic acid and vitamin E as stated conditioning agents, consistent with its 'skincare-infused' claim. No major flagged allergens in the formula.",
+    "url": "https://www.nykaa.com/search/result/?q=Charlotte%20Tilbury%20Pillow%20Talk%20Lipstick"
   }
 ]
