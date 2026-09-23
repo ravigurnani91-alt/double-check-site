@@ -97,6 +97,14 @@
   footer { border-top:2px solid var(--ink); padding:20px 0 36px; font-family:'Space Grotesk', sans-serif; font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
   @media (max-width:760px) { h1.post-title { font-size:26px; } }
   .pain-intro { font-size:16.5px; color:var(--ink-soft); margin:24px 0 8px; max-width:60ch; }
+  .related-section { margin:48px 0; padding-top:32px; border-top:2px solid var(--ink); }
+  .related-section h2 { font-size:19px; margin-bottom:16px; }
+  .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .related-card { border:1.5px solid var(--ink); padding:16px; display:block; text-decoration:none; }
+  .related-card:hover { border-color:var(--red); }
+  .related-card .related-title { font-size:15.5px; margin-bottom:6px; }
+  .related-card .related-meta { font-family:'Space Grotesk', sans-serif; font-size:11.5px; color:var(--ink-soft); }
+  @media (max-width:760px) { .related-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -112,6 +120,7 @@
   <div class="case-id">CASE 0009</div>
   <h1 class="post-title">SK-II Facial Treatment Essence Review: Is Pitera Really a Miracle Ingredient?</h1>
   <div class="post-meta">Essences · Luxury · 6 min read</div>
+  <div class="byline" style="font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--ink-soft); margin-top:4px;">By Double Check Team</div>
   <div class="stamp-row"><div class="stamp-inner">MIXED</div></div>
   <figure class="product-image">
     <img src="/sk-ii-facial-treatment-essence.png" alt="SK-II Facial Treatment Essence bottle, an essence built on Pitera yeast fermentation extract" loading="lazy">
@@ -145,7 +154,34 @@
     <div class="faq-item"><h3>Is SK-II Facial Treatment Essence worth buying?</h3><p>For hydration, barrier support, and mild brightening, the ingredient has genuine backing. Whether it justifies the price over other fermented-ingredient essences comes down to budget and preference, since the core active (Galactomyces Ferment Filtrate) appears in more affordable products too.</p></div>
   </section>
   <div class="buy-block"><a class="buy-button" href="https://www.sk-ii.com/en-us/facial-treatment-essence/SKU-010119.html" target="_blank" rel="noopener">View Product →</a></div>
+  <div id="related-cases-slot"></div>
 </div>
-<footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span>© 2026</span></div></footer>
+
+<script>
+fetch('products.json')
+  .then(function(res) { return res.json(); })
+  .then(function(products) {
+    var currentId = "0009";
+    var currentCategory = "Essences · Luxury";
+    var currentBase = currentCategory.split(' ')[0];
+    var others = products.filter(function(p) {
+      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
+    }).slice(0, 4);
+    if (others.length === 0) {
+      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
+    }
+    if (others.length === 0) return;
+    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
+      others.map(function(p) {
+        return '<a class="related-card" href="' + p.url + '">' +
+          '<div class="related-title">' + p.title + '</div>' +
+          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
+        '</a>';
+      }).join('') + '</div></div>';
+    document.getElementById('related-cases-slot').innerHTML = html;
+  })
+  .catch(function(err) { console.warn('Could not load related cases.', err); });
+</script>
+<footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>

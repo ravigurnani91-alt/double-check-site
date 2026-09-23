@@ -80,6 +80,14 @@
   footer { border-top:2px solid var(--ink); padding:20px 0 36px; font-family:'Space Grotesk', sans-serif; font-size:12.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
   @media (max-width:760px) { h1.post-title { font-size:26px; } }
   .pain-intro { font-size:16.5px; color:var(--ink-soft); margin:24px 0 8px; max-width:60ch; }
+  .related-section { margin:48px 0; padding-top:32px; border-top:2px solid var(--ink); }
+  .related-section h2 { font-size:19px; margin-bottom:16px; }
+  .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .related-card { border:1.5px solid var(--ink); padding:16px; display:block; text-decoration:none; }
+  .related-card:hover { border-color:var(--red); }
+  .related-card .related-title { font-size:15.5px; margin-bottom:6px; }
+  .related-card .related-meta { font-family:'Space Grotesk', sans-serif; font-size:11.5px; color:var(--ink-soft); }
+  @media (max-width:760px) { .related-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -95,6 +103,7 @@
   <div class="case-id">CASE 0003</div>
   <h1 class="post-title">Sunscreens That Don't Leave a White Cast, Ranked for Indian Skin</h1>
   <div class="post-meta">Sunscreen · Comparison · 8 min read</div>
+  <div class="byline" style="font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--ink-soft); margin-top:4px;">By Double Check Team</div>
   <div class="stamp-row"><div class="stamp-inner">MIXED</div></div>
 
   <p class="pain-intro">If you've given up on sunscreen because every one you try leaves a chalky, white film, you're not imagining it — it's a real formulation issue, not user error.</p>
@@ -153,7 +162,34 @@
     <div class="faq-item"><h3>Are chemical sunscreens safe to use daily?</h3><p>Yes. Common chemical filters used in sunscreens sold in India, such as avobenzone and octocrylene, are approved for daily use by regulatory bodies and have decades of safety data. Mineral filters are also safe; the choice between them is mostly about texture, cast, and skin sensitivity rather than safety.</p></div>
     <div class="faq-item"><h3>Is SPF 50 necessary for Indian weather?</h3><p>For daily outdoor exposure in India's high-UV climate, SPF 50 with PA++++ is a reasonable standard, particularly between 10am and 4pm. SPF 30 can be adequate for mostly-indoor days with minimal sun exposure.</p></div>
   </section>
+  <div id="related-cases-slot"></div>
 </div>
-<footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span>© 2026</span></div></footer>
+
+<script>
+fetch('products.json')
+  .then(function(res) { return res.json(); })
+  .then(function(products) {
+    var currentId = "0003";
+    var currentCategory = "Sunscreen · Comparison";
+    var currentBase = currentCategory.split(' ')[0];
+    var others = products.filter(function(p) {
+      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
+    }).slice(0, 4);
+    if (others.length === 0) {
+      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
+    }
+    if (others.length === 0) return;
+    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
+      others.map(function(p) {
+        return '<a class="related-card" href="' + p.url + '">' +
+          '<div class="related-title">' + p.title + '</div>' +
+          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
+        '</a>';
+      }).join('') + '</div></div>';
+    document.getElementById('related-cases-slot').innerHTML = html;
+  })
+  .catch(function(err) { console.warn('Could not load related cases.', err); });
+</script>
+<footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>
