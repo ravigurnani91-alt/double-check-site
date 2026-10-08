@@ -245,34 +245,8 @@
   <div class="buy-block">
     <a class="buy-button" href="https://thebathandcare.com/products/needle-glow-advanced-exosome-infused-skin-booster" target="_blank" rel="noopener">View Product →</a>
   </div>
-  <div id="related-cases-slot"></div>
+  <div class="related-section"><h2>Related Case Files</h2><div class="related-grid"><a class="related-card" href="clayco-cica-microneedling-exosome-serum.html"><div class="related-title">ClayCo Cica Microneedling Serum: Real Exosomes or Just Spicules?</div><div class="related-meta">Serums · Exosomes · MIXED</div></a><a class="related-card" href="dr-su-exosome-plump-party-serum.html"><div class="related-title">Dr. Su XO Plump Party Serum: Does It Really Contain Exosomes?</div><div class="related-meta">Serums · Exosomes · MIXED</div></a><a class="related-card" href="post-garnier-vitamin-c.html"><div class="related-title">Garnier Vitamin C + Face Serum</div><div class="related-meta">Serums · Brightening · VERIFIED*</div></a><a class="related-card" href="dr-barbara-sturm-super-anti-aging-serum.html"><div class="related-title">Dr. Barbara Sturm Super Anti-Aging Serum: Does the Peptide Justify the Price?</div><div class="related-meta">Serums · Luxury · MIXED</div></a></div></div>
 </div>
-
-<script>
-fetch('products.json')
-  .then(function(res) { return res.json(); })
-  .then(function(products) {
-    var currentId = "0007";
-    var currentCategory = "Serums · Exosomes";
-    var currentBase = currentCategory.split(' ')[0];
-    var others = products.filter(function(p) {
-      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
-    }).slice(0, 4);
-    if (others.length === 0) {
-      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
-    }
-    if (others.length === 0) return;
-    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
-      others.map(function(p) {
-        return '<a class="related-card" href="' + p.url + '">' +
-          '<div class="related-title">' + p.title + '</div>' +
-          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
-        '</a>';
-      }).join('') + '</div></div>';
-    document.getElementById('related-cases-slot').innerHTML = html;
-  })
-  .catch(function(err) { console.warn('Could not load related cases.', err); });
-</script>
 
 <footer>
   <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">

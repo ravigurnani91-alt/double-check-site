@@ -142,34 +142,9 @@
     <div class="faq-item"><h3>Does Black Rose Cream have anti-aging evidence?</h3><p>The base emollients support skin texture and hydration, which can improve the appearance of fine lines short-term. Specific collagen-boosting or firming claims tied to the rose complex are not independently verified at the level the marketing suggests.</p></div>
   </section>
   <div class="buy-block"><a class="buy-button" href="https://www.sisley-paris.com/en-us/black-rose-cream.html" target="_blank" rel="noopener">View Product →</a></div>
-  <div id="related-cases-slot"></div>
+  <div class="related-section"><h2>Related Case Files</h2><div class="related-grid"><a class="related-card" href="chanel-sublimage-la-creme.html"><div class="related-title">Chanel Sublimage La Crème: What's the Vanilla Extract Actually For?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="la-mer-creme-de-la-mer.html"><div class="related-title">La Mer Crème de la Mer: What's Actually in "Miracle Broth"?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="guerlain-orchidee-imperiale-cream.html"><div class="related-title">Guerlain Orchidée Impériale: Is the Orchid Extract Doing Anything?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="augustinus-bader-the-cream.html"><div class="related-title">Augustinus Bader The Cream: What Is TFC8, Really?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a></div></div>
 </div>
 
-<script>
-fetch('products.json')
-  .then(function(res) { return res.json(); })
-  .then(function(products) {
-    var currentId = "0012";
-    var currentCategory = "Moisturizers · Luxury";
-    var currentBase = currentCategory.split(' ')[0];
-    var others = products.filter(function(p) {
-      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
-    }).slice(0, 4);
-    if (others.length === 0) {
-      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
-    }
-    if (others.length === 0) return;
-    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
-      others.map(function(p) {
-        return '<a class="related-card" href="' + p.url + '">' +
-          '<div class="related-title">' + p.title + '</div>' +
-          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
-        '</a>';
-      }).join('') + '</div></div>';
-    document.getElementById('related-cases-slot').innerHTML = html;
-  })
-  .catch(function(err) { console.warn('Could not load related cases.', err); });
-</script>
 <footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>

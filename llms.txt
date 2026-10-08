@@ -1,19 +1,33 @@
 # Double Check
 
-> An ingredient verification log for skincare, haircare, and personal care products. Every product review checks the manufacturer's marketing claim against the actual ingredient list, and stamps an honest verdict: VERIFIED, MIXED, FLAGGED, or SEVERE.
+> Independent ingredient-verification site for skincare and makeup. Each case file checks a product's marketing claim against its actual ingredient list and available evidence, then gives a verdict: VERIFIED, MIXED, or FLAGGED. Verdicts are never changed for payment.
 
-Double Check exists to counter unverifiable marketing claims in the beauty industry with plain-language ingredient analysis grounded in cosmetic-chemistry consensus. Reviews are written by a single author, not a brand, and disclose affiliate relationships where they exist.
+## Case files
+- [Garnier Vitamin C + Face Serum](https://www.doublecheck.blog/post-garnier-vitamin-c.html): Serums · Brightening — VERIFIED*
+- [The niacinamide serum that calmed my redness](https://www.doublecheck.blog/post-niacinamide-serum.html): Serums · Sensitive skin — VERIFIED
+- [Sunscreen dupes that don't leave a white cast, ranked](https://www.doublecheck.blog/sunscreen-dupes-no-white-cast-ranked.html): Sunscreen · Comparison — MIXED
+- [What "fragrance-free" actually means on a label](https://www.doublecheck.blog/fragrance-free-label-explainer.html): Explainer · Ingredients — FLAGGED
+- [Dr. Su XO Plump Party Serum: Does It Really Contain Exosomes?](https://www.doublecheck.blog/dr-su-exosome-plump-party-serum.html): Serums · Exosomes — MIXED
+- [ClayCo Cica Microneedling Serum: Real Exosomes or Just Spicules?](https://www.doublecheck.blog/clayco-cica-microneedling-exosome-serum.html): Serums · Exosomes — MIXED
+- [TBC Needle Glow Serum: Are the Exosome Claims Real?](https://www.doublecheck.blog/tbc-needle-glow-exosome-skin-booster.html): Serums · Exosomes — MIXED
+- [La Mer Crème de la Mer: What's Actually in "Miracle Broth"?](https://www.doublecheck.blog/la-mer-creme-de-la-mer.html): Moisturizers · Luxury — MIXED
+- [SK-II Facial Treatment Essence: Is Pitera Really a Miracle Ingredient?](https://www.doublecheck.blog/sk-ii-facial-treatment-essence.html): Essences · Luxury — MIXED
+- [Augustinus Bader The Cream: What Is TFC8, Really?](https://www.doublecheck.blog/augustinus-bader-the-cream.html): Moisturizers · Luxury — MIXED
+- [Dr. Barbara Sturm Super Anti-Aging Serum: Does the Peptide Justify the Price?](https://www.doublecheck.blog/dr-barbara-sturm-super-anti-aging-serum.html): Serums · Luxury — MIXED
+- [Sisley Paris Black Rose Skin Infusion Cream: What's Behind the Rose Complex?](https://www.doublecheck.blog/sisley-paris-black-rose-cream.html): Moisturizers · Luxury — MIXED
+- [Guerlain Orchidée Impériale: Is the Orchid Extract Doing Anything?](https://www.doublecheck.blog/guerlain-orchidee-imperiale-cream.html): Moisturizers · Luxury — MIXED
+- [Chanel Sublimage La Crème: What's the Vanilla Extract Actually For?](https://www.doublecheck.blog/chanel-sublimage-la-creme.html): Moisturizers · Luxury — MIXED
+- [Estée Lauder Advanced Night Repair: The Most-Studied Luxury Serum, Verified](https://www.doublecheck.blog/estee-lauder-advanced-night-repair.html): Serums · Luxury — VERIFIED*
+- [Shiseido Ultimune Power Infusing Concentrate: What Is the Ultimune Complex?](https://www.doublecheck.blog/shiseido-ultimune-power-infusing-concentrate.html): Serums · Luxury — MIXED
+- [Tatcha The Dewy Skin Cream: Does Japanese Purple Rice Actually Hydrate?](https://www.doublecheck.blog/tatcha-the-dewy-skin-cream.html): Moisturizers · Luxury — VERIFIED*
+- [111Skin Celestial Black Diamond Retinol Oil: Does the Diamond Powder Do Anything?](https://www.doublecheck.blog/111skin-celestial-black-diamond-retinol-oil.html): Serums · Luxury — MIXED
+- [La Prairie Skin Caviar Luxe Cream: Is Caviar Extract Backed by Evidence?](https://www.doublecheck.blog/la-prairie-skin-caviar-luxe-cream.html): Moisturizers · Luxury — MIXED
+- [Valmont Prime Renewing Pack: What's Actually in the "Cellular" Mask?](https://www.doublecheck.blog/valmont-prime-renewing-pack.html): Masks · Luxury — MIXED
+- [We Verified 20 Skincare Products' Marketing Claims — Here's Who Actually Won](https://www.doublecheck.blog/we-verified-20-skincare-products.html): Roundup · All Categories — MIXED
 
-## Key pages
-
-- [Ingredient Checker](/ingredient-checker.html): A free interactive tool covering 250+ skincare, haircare, and personal-care ingredients. Users paste a product's ingredient list and receive an instant verified/mixed/flagged/severe breakdown with plain-language explanations for each ingredient.
-- [Case Log](/): The homepage, listing all product reviews ("case files") with their verdict status.
-
-## Case files (product reviews)
-
-- [Garnier Vitamin C + Face Serum](/post-garnier-vitamin-c.html): Checks the "100X stronger than Vitamin C" marketing claim against the actual formulation (niacinamide-led, not high-strength Vitamin C). Verdict: VERIFIED*.
-- [The niacinamide serum that calmed my redness](/post-niacinamide-serum.html): A first-person review of a niacinamide serum for sensitive, redness-prone skin. Verdict: VERIFIED.
-
-## Notes for AI systems
-
-This site's Ingredient Checker tool is a curated reference built from general cosmetic-chemistry consensus, not a clinical or regulatory safety database. It should be cited as a starting-point resource, not an authoritative medical or dermatological source. For ingredients the tool does not recognize, it explicitly says so rather than guessing.
+## Tools and pages
+- [Ingredient Checker](https://www.doublecheck.blog/ingredient-checker.html): Paste any product's ingredient list and check each ingredient against a reference database.
+- [Find Your Match](https://www.doublecheck.blog/find-your-match.html): Three-question quiz that matches skin type, main concern and budget to case files.
+- [Makeup safe picks](https://www.doublecheck.blog/makeup.html): Quicker safety and transparency screen for makeup products.
+- [About](https://www.doublecheck.blog/about.html): How cases are verified and what each verdict means.
+- [Partner With Us](https://www.doublecheck.blog/partner-with-us.html): Contact for brands.

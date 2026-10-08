@@ -10,20 +10,20 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tatcha The Dewy Skin Cream: Does Japanese Purple Rice Actually Hydrate?">
 <meta property="og:description" content="Japanese purple rice, Okinawa red algae, and hyaluronic acid deliver 'plumped, dewy' skin with 24-hour hydration.">
-<meta property="og:image" content="https://www.doublecheck.blog/tatcha-the-dewy-skin-cream.png">
+<meta property="og:image" content="https://www.doublecheck.blog/Tatcha%20The%20Dewy%20Skin%20Cream.png">
 <meta property="og:url" content="https://www.doublecheck.blog/tatcha-the-dewy-skin-cream.html">
 <meta property="og:site_name" content="Double Check">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tatcha The Dewy Skin Cream: Does Japanese Purple Rice Actually Hydrate?">
 <meta name="twitter:description" content="Japanese purple rice, Okinawa red algae, and hyaluronic acid deliver 'plumped, dewy' skin with 24-hour hydration.">
-<meta name="twitter:image" content="https://www.doublecheck.blog/tatcha-the-dewy-skin-cream.png">
+<meta name="twitter:image" content="https://www.doublecheck.blog/Tatcha%20The%20Dewy%20Skin%20Cream.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Review",
-  "itemReviewed": { "@type": "Product", "name": "Tatcha The Dewy Skin Cream", "image": "https://www.doublecheck.blog/tatcha-the-dewy-skin-cream.png" },
+  "itemReviewed": { "@type": "Product", "name": "Tatcha The Dewy Skin Cream", "image": "https://www.doublecheck.blog/Tatcha%20The%20Dewy%20Skin%20Cream.png" },
   "author": { "@type": "Organization", "name": "Double Check" },
   "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5", "worstRating": "1" },
   "reviewBody": "This is a well-built, genuinely hydrating formula — hyaluronic acid, squalane, and rice extract are all reasonably evidenced for the 'dewy, plumped' effect being marketed. The 'purple rice' and 'Okinawa algae' sourcing details are more storytelling than independently distinct science, but the underlying ingredient choices are sound and the hydration claim holds up."
@@ -110,7 +110,7 @@
   <div class="byline" style="font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--ink-soft); margin-top:4px;">By Double Check Team</div>
   <div class="stamp-row"><div class="stamp-inner">VERIFIED*</div></div>
   <figure class="product-image">
-    <img src="/tatcha-the-dewy-skin-cream.png" alt="Tatcha The Dewy Skin Cream" loading="lazy">
+    <img src="/Tatcha%20The%20Dewy%20Skin%20Cream.png" alt="Tatcha The Dewy Skin Cream" loading="lazy">
   </figure>
   <p class="pain-intro">If your skin feels tight, flaky, or dehydrated no matter how much moisturizer you layer on, the problem is usually which ingredients you're using, not how much product.</p>
 
@@ -142,34 +142,9 @@
     <div class="faq-item"><h3>Is this cream good for dry skin?</h3><p>Yes — the combination of humectants (hyaluronic acid) and emollients (squalane, camellia oil) is a well-evidenced formula specifically suited to dry skin.</p></div>
   </section>
   <div class="buy-block"><a class="buy-button" href="https://www.tatcha.com/product/the-dewy-skin-cream/TAT090.html" target="_blank" rel="noopener">View Product →</a></div>
-  <div id="related-cases-slot"></div>
+  <div class="related-section"><h2>Related Case Files</h2><div class="related-grid"><a class="related-card" href="chanel-sublimage-la-creme.html"><div class="related-title">Chanel Sublimage La Crème: What's the Vanilla Extract Actually For?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="sisley-paris-black-rose-cream.html"><div class="related-title">Sisley Paris Black Rose Skin Infusion Cream: What's Behind the Rose Complex?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="la-mer-creme-de-la-mer.html"><div class="related-title">La Mer Crème de la Mer: What's Actually in "Miracle Broth"?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="la-prairie-skin-caviar-luxe-cream.html"><div class="related-title">La Prairie Skin Caviar Luxe Cream: Is Caviar Extract Backed by Evidence?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a></div></div>
 </div>
 
-<script>
-fetch('products.json')
-  .then(function(res) { return res.json(); })
-  .then(function(products) {
-    var currentId = "0017";
-    var currentCategory = "Moisturizers · Luxury";
-    var currentBase = currentCategory.split(' ')[0];
-    var others = products.filter(function(p) {
-      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
-    }).slice(0, 4);
-    if (others.length === 0) {
-      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
-    }
-    if (others.length === 0) return;
-    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
-      others.map(function(p) {
-        return '<a class="related-card" href="' + p.url + '">' +
-          '<div class="related-title">' + p.title + '</div>' +
-          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
-        '</a>';
-      }).join('') + '</div></div>';
-    document.getElementById('related-cases-slot').innerHTML = html;
-  })
-  .catch(function(err) { console.warn('Could not load related cases.', err); });
-</script>
 <footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>

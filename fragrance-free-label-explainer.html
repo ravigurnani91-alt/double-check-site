@@ -148,34 +148,9 @@
     <div class="faq-item"><h3>Can a fragrance-free product still cause an allergic reaction?</h3><p>Yes. Fragrance-free products can still contain ingredients like essential oils that have a scent but serve another stated purpose (such as an emollient), and these can still trigger allergic reactions in sensitive individuals.</p></div>
     <div class="faq-item"><h3>Are "fragrance-free" and "unscented" legally regulated terms?</h3><p>In the US, neither term has an official legal definition under cosmetics regulation, since the FDA treats most skincare products as cosmetics rather than drugs, which are less strictly regulated. This means brands can apply these labels according to their own internal standards.</p></div>
   </section>
-  <div id="related-cases-slot"></div>
+  <div class="related-section"><h2>Related Case Files</h2><div class="related-grid"><a class="related-card" href="post-niacinamide-serum.html"><div class="related-title">The niacinamide serum that calmed my redness</div><div class="related-meta">Serums · Sensitive skin · VERIFIED</div></a><a class="related-card" href="dr-barbara-sturm-super-anti-aging-serum.html"><div class="related-title">Dr. Barbara Sturm Super Anti-Aging Serum: Does the Peptide Justify the Price?</div><div class="related-meta">Serums · Luxury · MIXED</div></a><a class="related-card" href="sunscreen-dupes-no-white-cast-ranked.html"><div class="related-title">Sunscreen dupes that don't leave a white cast, ranked</div><div class="related-meta">Sunscreen · Comparison · MIXED</div></a><a class="related-card" href="dr-su-exosome-plump-party-serum.html"><div class="related-title">Dr. Su XO Plump Party Serum: Does It Really Contain Exosomes?</div><div class="related-meta">Serums · Exosomes · MIXED</div></a></div></div>
 </div>
 
-<script>
-fetch('products.json')
-  .then(function(res) { return res.json(); })
-  .then(function(products) {
-    var currentId = "0004";
-    var currentCategory = "Explainer · Ingredients";
-    var currentBase = currentCategory.split(' ')[0];
-    var others = products.filter(function(p) {
-      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
-    }).slice(0, 4);
-    if (others.length === 0) {
-      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
-    }
-    if (others.length === 0) return;
-    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
-      others.map(function(p) {
-        return '<a class="related-card" href="' + p.url + '">' +
-          '<div class="related-title">' + p.title + '</div>' +
-          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
-        '</a>';
-      }).join('') + '</div></div>';
-    document.getElementById('related-cases-slot').innerHTML = html;
-  })
-  .catch(function(err) { console.warn('Could not load related cases.', err); });
-</script>
 <footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>

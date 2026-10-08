@@ -142,34 +142,9 @@
     <div class="faq-item"><h3>Is this product worth the price over a standard retinol oil?</h3><p>The retinol delivery and supporting emollients (squalane, vitamin E) are solid, but functionally comparable to more affordable retinol oils. The diamond-powder branding accounts for a meaningful part of the premium price without adding independently verified skin benefits.</p></div>
   </section>
   <div class="buy-block"><a class="buy-button" href="https://111skin.com/products/celestial-black-diamond-retinol-oil" target="_blank" rel="noopener">View Product →</a></div>
-  <div id="related-cases-slot"></div>
+  <div class="related-section"><h2>Related Case Files</h2><div class="related-grid"><a class="related-card" href="shiseido-ultimune-power-infusing-concentrate.html"><div class="related-title">Shiseido Ultimune Power Infusing Concentrate: What Is the Ultimune Complex?</div><div class="related-meta">Serums · Luxury · MIXED</div></a><a class="related-card" href="estee-lauder-advanced-night-repair.html"><div class="related-title">Estée Lauder Advanced Night Repair: The Most-Studied Luxury Serum, Verified</div><div class="related-meta">Serums · Luxury · VERIFIED*</div></a><a class="related-card" href="dr-barbara-sturm-super-anti-aging-serum.html"><div class="related-title">Dr. Barbara Sturm Super Anti-Aging Serum: Does the Peptide Justify the Price?</div><div class="related-meta">Serums · Luxury · MIXED</div></a><a class="related-card" href="la-prairie-skin-caviar-luxe-cream.html"><div class="related-title">La Prairie Skin Caviar Luxe Cream: Is Caviar Extract Backed by Evidence?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a></div></div>
 </div>
 
-<script>
-fetch('products.json')
-  .then(function(res) { return res.json(); })
-  .then(function(products) {
-    var currentId = "0018";
-    var currentCategory = "Serums · Luxury";
-    var currentBase = currentCategory.split(' ')[0];
-    var others = products.filter(function(p) {
-      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
-    }).slice(0, 4);
-    if (others.length === 0) {
-      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
-    }
-    if (others.length === 0) return;
-    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
-      others.map(function(p) {
-        return '<a class="related-card" href="' + p.url + '">' +
-          '<div class="related-title">' + p.title + '</div>' +
-          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
-        '</a>';
-      }).join('') + '</div></div>';
-    document.getElementById('related-cases-slot').innerHTML = html;
-  })
-  .catch(function(err) { console.warn('Could not load related cases.', err); });
-</script>
 <footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>

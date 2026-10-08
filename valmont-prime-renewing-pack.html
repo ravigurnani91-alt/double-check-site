@@ -10,20 +10,20 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Valmont Prime Renewing Pack: What's Actually in the "Cellular" Mask?">
 <meta property="og:description" content="A 'cellular' formula built on DNA and RNA fragments is said to instantly and visibly regenerate skin in just 15 minutes.">
-<meta property="og:image" content="https://www.doublecheck.blog/valmont-prime-renewing-pack.png">
+<meta property="og:image" content="https://www.doublecheck.blog/Valmont%20Prime%20Renewing%20Pack.png">
 <meta property="og:url" content="https://www.doublecheck.blog/valmont-prime-renewing-pack.html">
 <meta property="og:site_name" content="Double Check">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Valmont Prime Renewing Pack: What's Actually in the "Cellular" Mask?">
 <meta name="twitter:description" content="A 'cellular' formula built on DNA and RNA fragments is said to instantly and visibly regenerate skin in just 15 minutes.">
-<meta name="twitter:image" content="https://www.doublecheck.blog/valmont-prime-renewing-pack.png">
+<meta name="twitter:image" content="https://www.doublecheck.blog/Valmont%20Prime%20Renewing%20Pack.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,500&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Review",
-  "itemReviewed": { "@type": "Product", "name": "Valmont Prime Renewing Pack", "image": "https://www.doublecheck.blog/valmont-prime-renewing-pack.png" },
+  "itemReviewed": { "@type": "Product", "name": "Valmont Prime Renewing Pack", "image": "https://www.doublecheck.blog/Valmont%20Prime%20Renewing%20Pack.png" },
   "author": { "@type": "Organization", "name": "Double Check" },
   "reviewRating": { "@type": "Rating", "ratingValue": "3", "bestRating": "5", "worstRating": "1" },
   "reviewBody": "The immediate 'glow' and plumping effect after use is real and comes from well-evidenced humectants and emollients (glycerin, squalane, panthenol) — a genuine short-term hydration mask. The 'DNA/RNA cellular regeneration' framing is where the claim outpaces the science: these ingredients function as moisture-binding agents in the formula, not as ingredients that biologically regenerate skin cells the way the marketing implies."
@@ -110,7 +110,7 @@
   <div class="byline" style="font-family:'Space Grotesk', sans-serif; font-size:12px; color:var(--ink-soft); margin-top:4px;">By Double Check Team</div>
   <div class="stamp-row"><div class="stamp-inner">MIXED</div></div>
   <figure class="product-image">
-    <img src="/valmont-prime-renewing-pack.png" alt="Valmont Prime Renewing Pack" loading="lazy">
+    <img src="/Valmont%20Prime%20Renewing%20Pack.png" alt="Valmont Prime Renewing Pack" loading="lazy">
   </figure>
   <p class="pain-intro">If your skin feels tight, flaky, or dehydrated no matter how much moisturizer you layer on, the problem is usually which ingredients you're using, not how much product.</p>
 
@@ -142,34 +142,9 @@
     <div class="faq-item"><h3>Is the DNA/RNA claim just marketing?</h3><p>The 'cellular regeneration' framing significantly overstates what's independently verified. The ingredients are real and functional within the formula, but not through the mechanism implied by the marketing language.</p></div>
   </section>
   <div class="buy-block"><a class="buy-button" href="https://www.valmontcosmetics.com/en_us/prime-renewing-pack.html" target="_blank" rel="noopener">View Product →</a></div>
-  <div id="related-cases-slot"></div>
+  <div class="related-section"><h2>Related Case Files</h2><div class="related-grid"><a class="related-card" href="tatcha-the-dewy-skin-cream.html"><div class="related-title">Tatcha The Dewy Skin Cream: Does Japanese Purple Rice Actually Hydrate?</div><div class="related-meta">Moisturizers · Luxury · VERIFIED*</div></a><a class="related-card" href="chanel-sublimage-la-creme.html"><div class="related-title">Chanel Sublimage La Crème: What's the Vanilla Extract Actually For?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="sisley-paris-black-rose-cream.html"><div class="related-title">Sisley Paris Black Rose Skin Infusion Cream: What's Behind the Rose Complex?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a><a class="related-card" href="la-mer-creme-de-la-mer.html"><div class="related-title">La Mer Crème de la Mer: What's Actually in "Miracle Broth"?</div><div class="related-meta">Moisturizers · Luxury · MIXED</div></a></div></div>
 </div>
 
-<script>
-fetch('products.json')
-  .then(function(res) { return res.json(); })
-  .then(function(products) {
-    var currentId = "0020";
-    var currentCategory = "Masks · Luxury";
-    var currentBase = currentCategory.split(' ')[0];
-    var others = products.filter(function(p) {
-      return p.id !== currentId && p.url !== '#' && p.category && p.category.split(' ')[0] === currentBase;
-    }).slice(0, 4);
-    if (others.length === 0) {
-      others = products.filter(function(p) { return p.id !== currentId && p.url !== '#'; }).slice(0, 4);
-    }
-    if (others.length === 0) return;
-    var html = '<div class="related-section"><h2>Related Case Files</h2><div class="related-grid">' +
-      others.map(function(p) {
-        return '<a class="related-card" href="' + p.url + '">' +
-          '<div class="related-title">' + p.title + '</div>' +
-          '<div class="related-meta">' + p.category + ' \u00b7 ' + p.statusLabel + '</div>' +
-        '</a>';
-      }).join('') + '</div></div>';
-    document.getElementById('related-cases-slot').innerHTML = html;
-  })
-  .catch(function(err) { console.warn('Could not load related cases.', err); });
-</script>
 <footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · © 2026</span></div></footer>
 </body>
 </html>
