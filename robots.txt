@@ -1,10 +1,9 @@
 # Double Check — robots.txt
-# Explicitly welcomes AI crawlers for GEO/AEO/LLMO visibility, alongside standard search engines.
+# Welcomes search engines and AI crawlers for search, AEO and GEO visibility.
 
 User-agent: *
 Allow: /
 
-# AI / LLM crawlers (explicitly allowed for citation in AI answers)
 User-agent: GPTBot
 Allow: /
 
@@ -29,4 +28,4 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-Sitemap: https://double-check-site.vercel.app/sitemap.xml
+Sitemap: https://www.doublecheck.blog/sitemap.xml

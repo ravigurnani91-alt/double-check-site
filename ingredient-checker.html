@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script src="/tracking.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingredient Checker — Double Check</title>
+<link rel="canonical" href="https://www.doublecheck.blog/ingredient-checker.html">
 <meta name="description" content="Free tool: paste any skincare or haircare ingredient list and get an instant breakdown flagging irritants, allergens, and actives — covering 250+ common ingredients.">
 <script type="application/ld+json">
 {
@@ -104,6 +106,17 @@
     .summary-stamp-row { grid-template-columns: 1fr; }
     .result-table { font-size: 13px; }
   }
+  nav { display: flex; gap: 22px; font-family: 'Space Grotesk', sans-serif; font-size: 13.5px; font-weight: 500; flex-wrap: wrap; }
+  nav a { text-decoration: none; padding-bottom: 3px; border-bottom: 2px solid transparent; color: var(--ink); }
+  nav a:hover, nav a.nav-active { border-bottom-color: var(--red); }
+  .related-section { margin:48px 0; padding-top:32px; border-top:2px solid var(--ink); }
+  .related-section h2 { font-size:19px; margin-bottom:16px; }
+  .related-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .related-card { border:1.5px solid var(--ink); padding:16px; display:block; text-decoration:none; color:var(--ink); }
+  .related-card:hover { border-color:var(--red); }
+  .related-card .related-title { font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15.5px; margin-bottom:6px; }
+  .related-card .related-meta { font-family:'Space Grotesk', sans-serif; font-size:11.5px; color:var(--ink-soft); }
+  @media (max-width:760px) { .related-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -111,10 +124,7 @@
 <header>
   <div class="wrap header-row">
     <a href="index.html" class="logo"><span class="sq"></span>Double Check</a>
-    <nav>
-      <a href="index.html">Case Log</a>
-      <a href="ingredient-checker.html" class="nav-active">Ingredient Checker</a>
-    </nav>
+    <nav><a href="index.html">Skincare</a><a href="ingredient-checker.html" class="nav-active">Ingredient Checker</a><a href="makeup.html">Makeup</a><a href="find-your-match.html">Find Your Match</a><a href="about.html">About</a></nav>
   </div>
 </header>
 
@@ -156,9 +166,7 @@
   </div>
 </div>
 
-<footer>
-  <div class="wrap">Double Check — ingredient verification log</div>
-</footer>
+<footer><div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;"><span>Double Check — ingredient verification log</span><span><a href="partner-with-us.html" style="text-decoration:underline;">Partner With Us</a> · <a href="privacy-policy.html" style="text-decoration:underline;">Privacy &amp; Terms</a> · © 2026</span></div></footer>
 
 <script>
 // Curated ingredient database. status: "verified" (generally well-tolerated/beneficial),
